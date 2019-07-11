@@ -18,7 +18,7 @@ module.exports = {
             href: '/manifest.json'
         }]
     ],
-    base: '/PersonalBlog/',
+    base: '/myBlog/',
     serviceWorker: true,
     themeConfig: {
         // sidebar: 'auto',
@@ -50,10 +50,10 @@ module.exports = {
                 'css1', /* /css/css1.html */
                 'css2' /* /css/css2.html */
             ],
-            '/javascript/': [
+            '/学习心得/': [
                 '', /* /javascript/ */
-                'javascript1', /* /javascript/javascript1.html */
-                'javascript2' /* /javascript/javascript2.html */
+                'React', /* /javascript/javascript1.html */
+                'Vue' /* /javascript/javascript2.html */
             ],
             // fallback 放在最前面，会禁止所有的IP地址访问
             '/': [
@@ -67,7 +67,7 @@ module.exports = {
         activeHeaderLinks: false, // 禁用活动标题
         lastUpdated: '上次更新', // string | boolean 将以合适的日期格式显示在每一页的底部
         // 假定是 GitHub. 同时也可以是一个完整的 GitLab URL
-        repo: 'gangking/PersonalBlog',
+        repo: 'gangking/myBlog',
         // 自定义仓库链接文字。默认从 `themeConfig.repo` 中自动推断为
         // "GitHub"/"GitLab"/"Bitbucket" 其中之一，或是 "Source"。
         repoLabel: '查看源码',
@@ -104,18 +104,18 @@ module.exports = {
 
                 ]
             },{
-                text: 'javascript',
+                text: '学习心得',
                 items: [{
-                        text: 'javascript',
-                        link: '/javascript/'
+                        text: 'webpack',
+                        link: '/学习心得/'
                     },
                     {
-                        text: 'javascript1',
-                        link: '/javascript/javascript1/'
+                        text: 'React',
+                        link: '/学习心得/React/'
                     },
                     {
-                        text: 'javascript2',
-                        link: '/javascript/javascript2/'
+                        text: 'Vue',
+                        link: '/学习心得/Vue/'
                     }
 
                 ]
