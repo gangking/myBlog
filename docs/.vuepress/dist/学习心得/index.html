@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>webpack笔记 | 武人熊大大</title>
+    <meta name="description" content="武人熊大大的个人博客文档，vuepress文档">
+    <link rel="icon" href="/myBlog/favicon.ico">
+  <link rel="manifest" href="/myBlog/manifest.json">
+    
+    <link rel="preload" href="/myBlog/assets/css/0.styles.bd3d9b31.css" as="style"><link rel="preload" href="/myBlog/assets/js/app.92a10cb3.js" as="script"><link rel="preload" href="/myBlog/assets/js/2.27e617b7.js" as="script"><link rel="preload" href="/myBlog/assets/js/4.f6c91c73.js" as="script"><link rel="prefetch" href="/myBlog/assets/js/10.341d3017.js"><link rel="prefetch" href="/myBlog/assets/js/11.d6ea35f0.js"><link rel="prefetch" href="/myBlog/assets/js/12.7f61d52b.js"><link rel="prefetch" href="/myBlog/assets/js/13.dd3ae377.js"><link rel="prefetch" href="/myBlog/assets/js/14.cfa0837d.js"><link rel="prefetch" href="/myBlog/assets/js/3.23fe78c6.js"><link rel="prefetch" href="/myBlog/assets/js/5.09021a2b.js"><link rel="prefetch" href="/myBlog/assets/js/6.04b4da35.js"><link rel="prefetch" href="/myBlog/assets/js/7.d3f8e80d.js"><link rel="prefetch" href="/myBlog/assets/js/8.2d62934a.js"><link rel="prefetch" href="/myBlog/assets/js/9.10dfa91e.js">
+    <link rel="stylesheet" href="/myBlog/assets/css/0.styles.bd3d9b31.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/myBlog/" class="home-link router-link-active"><!----> <span class="site-name">武人熊大大</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/myBlog/" class="nav-link">Home</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">css</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myBlog/css/" class="nav-link">css</a></li><li class="dropdown-item"><!----> <a href="/myBlog/css/css1/" class="nav-link">css1</a></li><li class="dropdown-item"><!----> <a href="/myBlog/css/css2/" class="nav-link">css2</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">学习心得</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myBlog/学习心得/" class="nav-link">webpack</a></li><li class="dropdown-item"><!----> <a href="/myBlog/学习心得/React/" class="nav-link">React</a></li><li class="dropdown-item"><!----> <a href="/myBlog/学习心得/Vue/" class="nav-link">Vue</a></li></ul></div></div><div class="nav-item"><a href="/myBlog/about/test.html" class="nav-link">about</a></div> <a href="https://github.com/gangking/myBlog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    查看源码
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/myBlog/" class="nav-link">Home</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">css</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myBlog/css/" class="nav-link">css</a></li><li class="dropdown-item"><!----> <a href="/myBlog/css/css1/" class="nav-link">css1</a></li><li class="dropdown-item"><!----> <a href="/myBlog/css/css2/" class="nav-link">css2</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">学习心得</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myBlog/学习心得/" class="nav-link">webpack</a></li><li class="dropdown-item"><!----> <a href="/myBlog/学习心得/React/" class="nav-link">React</a></li><li class="dropdown-item"><!----> <a href="/myBlog/学习心得/Vue/" class="nav-link">Vue</a></li></ul></div></div><div class="nav-item"><a href="/myBlog/about/test.html" class="nav-link">about</a></div> <a href="https://github.com/gangking/myBlog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    查看源码
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><a href="/myBlog/%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/" class="active sidebar-link">webpack笔记</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myBlog/%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/#基本的概念" class="sidebar-link">基本的概念</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myBlog/%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/#mode-开发模式" class="sidebar-link">mode 开发模式</a></li><li class="sidebar-sub-header"><a href="/myBlog/%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/#入口文件-entry" class="sidebar-link">入口文件(entry)</a></li><li class="sidebar-sub-header"><a href="/myBlog/%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/#输出-output" class="sidebar-link">输出(output)</a></li><li class="sidebar-sub-header"><a href="/myBlog/%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/#loader" class="sidebar-link">loader</a></li><li class="sidebar-sub-header"><a href="/myBlog/%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/#插件-plugins" class="sidebar-link">插件(plugins</a></li></ul></li><li class="sidebar-sub-header"><a href="/myBlog/%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/#webpack-的安装" class="sidebar-link">webpack 的安装</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myBlog/%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/#本地安装-webpack" class="sidebar-link">本地安装 webpack</a></li><li class="sidebar-sub-header"><a href="/myBlog/%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/#全局安装-webpack（不推荐" class="sidebar-link">全局安装 webpack（不推荐)</a></li></ul></li><li class="sidebar-sub-header"><a href="/myBlog/%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/#快速入门完整-demo" class="sidebar-link">快速入门完整 demo</a></li><li class="sidebar-sub-header"><a href="/myBlog/%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/#加载非-js-文件" class="sidebar-link">加载非 js 文件</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myBlog/%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/#加载-css-文件" class="sidebar-link">加载 CSS 文件</a></li><li class="sidebar-sub-header"><a href="/myBlog/%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/#module-配置补充" class="sidebar-link">module 配置补充</a></li><li class="sidebar-sub-header"><a href="/myBlog/%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/#加载-sass-文件" class="sidebar-link">加载 Sass 文件</a></li><li class="sidebar-sub-header"><a href="/myBlog/%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/#创建-source-map" class="sidebar-link">创建 Source Map</a></li><li class="sidebar-sub-header"><a href="/myBlog/%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/#postcss-处理-loader（附带：添加-css3-前缀）" class="sidebar-link">PostCSS 处理 loader（附带：添加 css3 前缀）</a></li><li class="sidebar-sub-header"><a href="/myBlog/%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/#样式表抽离成专门的单独文件并且设置版本号" class="sidebar-link">样式表抽离成专门的单独文件并且设置版本号</a></li><li class="sidebar-sub-header"><a href="/myBlog/%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/#压缩-css" class="sidebar-link">压缩 CSS</a></li><li class="sidebar-sub-header"><a href="/myBlog/%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/#js-压缩" class="sidebar-link">JS 压缩</a></li><li class="sidebar-sub-header"><a href="/myBlog/%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/#解决-css-文件或者-js-文件名字哈希变化的问题" class="sidebar-link">解决 CSS 文件或者 JS 文件名字哈希变化的问题</a></li><li class="sidebar-sub-header"><a href="/myBlog/%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/#清理-dist-目录" class="sidebar-link">清理 dist 目录</a></li></ul></li></ul></li><li><a href="/myBlog/学习心得/React.html" class="sidebar-link">React页面One</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myBlog/学习心得/React.html#页面one二级标题" class="sidebar-link">页面One二级标题</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myBlog/学习心得/React.html#页面one三级标题" class="sidebar-link">页面One三级标题</a></li></ul></li></ul></li><li><a href="/myBlog/学习心得/Vue.html" class="sidebar-link">Vue页面Two</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myBlog/学习心得/Vue.html#页面two二级标题" class="sidebar-link">页面Two二级标题</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myBlog/学习心得/Vue.html#页面two三级标题" class="sidebar-link">页面Two三级标题</a></li></ul></li></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="webpack笔记"><a href="#webpack笔记" aria-hidden="true" class="header-anchor">#</a> webpack笔记</h1> <h3 id="webpack-是什么？"><a href="#webpack-是什么？" aria-hidden="true" class="header-anchor">#</a> webpack 是什么？</h3> <p>本质上，webpack 是一个现代 JavaScript 应用程序的静态模块打包器(module bundler)。当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 bundle。</p> <p><img src="/myBlog/assets/img/webpack.230eb567.png" alt=""></p> <h2 id="基本的概念"><a href="#基本的概念" aria-hidden="true" class="header-anchor">#</a> 基本的概念</h2> <h3 id="mode-开发模式"><a href="#mode-开发模式" aria-hidden="true" class="header-anchor">#</a> mode 开发模式</h3> <p>webpack 提供 mode 配置选项，配置 webpack 相应模式的内置优化。</p> <div class="language- extra-class"><pre class="language-text"><code>// webpack.production.config.js
+module.exports = {
++  mode: 'production',// 产品模式
+}
+</code></pre></div><h3 id="入口文件-entry"><a href="#入口文件-entry" aria-hidden="true" class="header-anchor">#</a> 入口文件(entry)</h3> <p>入口文件，类似于其他语言的起始文件。比如：c 语言的 main 函数所在的文件。</p> <p>入口起点(entry point)指示 webpack 应该使用哪个模块，来作为构建其内部依赖图的开始。进入入口起点后，webpack 会找出有哪些模块和库是入口起点（直接和间接）依赖的。</p> <p>可以在 webpack 的配置文件中配置入口，配置节点为： <code>entry</code>,当然可以配置一个入口，也可以配置多个。</p> <h3 id="输出-output"><a href="#输出-output" aria-hidden="true" class="header-anchor">#</a> 输出(output)</h3> <p>output 属性告诉 webpack 在哪里输出它所创建的 bundles，以及如何命名这些文件。</p> <div class="language- extra-class"><pre class="language-text"><code>const path = require('path');
+
+module.exports = {
+  entry: './path/to/my/entry/file.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'my-first-webpack.bundle.js'
+  }
+};
+</code></pre></div><h3 id="loader"><a href="#loader" aria-hidden="true" class="header-anchor">#</a> loader</h3> <p>loader 让 webpack 能够去处理那些非 JavaScript 文件（webpack 自身只理解 JavaScript）。loader 可以将所有类型的文件转换为 webpack 能够处理的有效模块，然后你就可以利用 webpack 的打包能力，对它们进行处理。</p> <h3 id="插件-plugins"><a href="#插件-plugins" aria-hidden="true" class="header-anchor">#</a> 插件(plugins</h3> <p>loader 被用于转换某些类型的模块，而插件则可以用于执行范围更广的任务。插件的范围包括，从打包优化和压缩，一直到重新定义环境中的变量。插件接口功能极其强大，可以用来处理各种各样的任务。</p> <h2 id="webpack-的安装"><a href="#webpack-的安装" aria-hidden="true" class="header-anchor">#</a> webpack 的安装</h2> <p>请确保安装了 <code>Node.js</code> 的最新版本。而且已经在您的项目根目录下已经初始化好了最基本的<code>package.json</code>文件</p> <h3 id="本地安装-webpack"><a href="#本地安装-webpack" aria-hidden="true" class="header-anchor">#</a> 本地安装 webpack</h3> <div class="language- extra-class"><pre class="language-text"><code>$ npm install --save-dev webpack
+
+# 如果你使用 webpack 4+ 版本，你还需要安装 CLI。
+npm install --save-dev webpack-cli
+</code></pre></div><p>安装完成后，可以添加<code>npm</code>的<code>script</code>脚本</p> <div class="language- extra-class"><pre class="language-text"><code>// package.json
+&quot;scripts&quot;: {
+    &quot;start&quot;: &quot;webpack --config webpack.config.js&quot;
+}
+</code></pre></div><h3 id="全局安装-webpack（不推荐"><a href="#全局安装-webpack（不推荐" aria-hidden="true" class="header-anchor">#</a> 全局安装 webpack（不推荐)</h3> <p>将使 webpack 在全局环境下可用：</p> <div class="language- extra-class"><pre class="language-text"><code>npm install --global webpack
+</code></pre></div><blockquote><p>注意：不推荐全局安装 webpack。这会将你项目中的 webpack 锁定到指定版本，并且在使用不同的 webpack 版本的项目中，可能会导致构建失败。</p></blockquote> <h2 id="快速入门完整-demo"><a href="#快速入门完整-demo" aria-hidden="true" class="header-anchor">#</a> 快速入门完整 demo</h2> <ul><li>第一步：创建项目结构</li></ul> <p>首先我们创建一个目录，初始化 npm，然后 在本地安装 webpack，接着安装 webpack-cli（此工具用于在命令行中运行 webpack）：</p> <div class="language- extra-class"><pre class="language-text"><code>mkdir webpack-demo &amp;&amp; cd webpack-demo
+npm init -y
+npm install webpack webpack-cli --save-dev
+</code></pre></div><p>项目结构</p> <div class="language- extra-class"><pre class="language-text"><code>  webpack-demo
++ |- package.json
++ |- /dist
++   |- index.html
++ |- /src
++   |- index.js
+</code></pre></div><ul><li>第二步：安装 loadash 依赖和编写 js 文件</li></ul> <div class="language- extra-class"><pre class="language-text"><code>npm install --save lodash
+</code></pre></div><p>编写：src/index.js 文件</p> <div class="language- extra-class"><pre class="language-text"><code>import _ from 'lodash';
+
+function createDomElement() {
+  var dom = document.createElement('div');
+  dom.innerHTML = _.join(['aicoder', '.com', ' wow'], '');
+  return dom;
+}
+
+document.body.appendChild(createDomElement());
+</code></pre></div><p>index.html</p> <div class="language- extra-class"><pre class="language-text"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;
+  &lt;title&gt;起步&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;script src=&quot;./main.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div><ul><li>第三步：编写 webpack 配置文件</li></ul> <p>根目录下添加 <code>webpack.config.js</code>文件。</p> <div class="language- extra-class"><pre class="language-text"><code>  webpack-demo
+  |- package.json
++ |- webpack.config.js
+  |- /dist
+    |- index.html
+  |- /src
+    |- index.js
+</code></pre></div><p>webpack.config.js 内容如下：</p> <div class="language- extra-class"><pre class="language-text"><code>const path = require('path');
+
+module.exports = {
+  mode: 'development',
+  entry: './src/index.js',
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, './dist')
+  }
+};
+</code></pre></div><ul><li>执行构建任务</li></ul> <p>直接执行构建任务：</p> <div class="language- extra-class"><pre class="language-text"><code>npx webpack
+</code></pre></div><p>打开： dist/index.html 可以查看到页面的结果。</p> <h2 id="加载非-js-文件"><a href="#加载非-js-文件" aria-hidden="true" class="header-anchor">#</a> 加载非 js 文件</h2> <p>webpack 最出色的功能之一就是，除了 JavaScript，还可以通过 loader 引入任何其他类型的文件</p> <h3 id="加载-css-文件"><a href="#加载-css-文件" aria-hidden="true" class="header-anchor">#</a> 加载 CSS 文件</h3> <ul><li>第一步： 安装 css 和 style 模块解析的依赖 <code>style-loader</code> 和 <code>css-loader</code></li></ul> <div class="language- extra-class"><pre class="language-text"><code>npm install --save-dev style-loader css-loader
+</code></pre></div><ul><li>第二步： 添加 css 解析的 loader</li></ul> <div class="language- extra-class"><pre class="language-text"><code>const path = require('path');
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist')
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      }
+    ]
+  }
+};
+</code></pre></div><ul><li><code>css-loader</code>： 辅助解析 js 中的 <code>import './main.css'</code></li> <li><code>style-loader</code>: 把 js 中引入的 css 内容 注入到 html 标签中，并添加 style 标签.依赖 <code>css-loader</code></li></ul> <blockquote><p>你可以在依赖于此样式的 js 文件中 导入样式文件，比如：import './style.css'。现在，当该 js 模块运行时，含有 CSS 字符串的 <code>&lt;style&gt;</code> 标签，将被插入到 html 文件的 <code>&lt;head&gt;</code>中。</p></blockquote> <ul><li>第三步： 编写 css 文件和修改 js 文件</li></ul> <p>在 src 目录中添加 <code>style.css</code>文件</p> <div class="language- extra-class"><pre class="language-text"><code> webpack-demo
+  |- package.json
+  |- webpack.config.js
+  |- /dist
+    |- bundle.js
+    |- index.html
+  |- /src
++   |- style.css
+    |- index.js
+  |- /node_modules
+</code></pre></div><p>src/style.css</p> <div class="language- extra-class"><pre class="language-text"><code>.hello {
+  color: red;
+}
+</code></pre></div><p>修改 js 文件</p> <div class="language- extra-class"><pre class="language-text"><code>  import _ from 'lodash';
++ import './style.css';
+
+  function createDomElement() {
+    let dom = document.createElement('div');
+    dom.innerHTML = _.join(['aicoder', '.com', ' wow'], '');
++   dom.className = 'hello';
+    return dom;
+  }
+
+  document.body.appendChild(createDomElement());
+</code></pre></div><p>最后重新打开 dist 目录下的 index.html 看一下文字是否变成了红色的了。</p> <h3 id="module-配置补充"><a href="#module-配置补充" aria-hidden="true" class="header-anchor">#</a> module 配置补充</h3> <p>模块(module): 这些选项决定了如何处理项目中的不同类型的模块。</p> <p>webpack 模块可以支持如下:</p> <ul><li>ES2015 import 语句</li> <li>CommonJS require() 语句</li> <li>AMD define 和 require 语句</li> <li>css/sass/less 文件中的 @import 语句。</li> <li>样式<code>(url(...))</code>或 HTML 文件<code>(&lt;img src=...&gt;)</code>中的图片链接<code>(image url)</code></li></ul> <h4 id="module-noparse"><a href="#module-noparse" aria-hidden="true" class="header-anchor">#</a> module.noParse</h4> <p>值的类型： RegExp | [RegExp] | function</p> <p>防止 webpack 解析那些任何与给定正则表达式相匹配的文件。忽略的文件中不应该含有 import, require, define 的调用，或任何其他导入机制。忽略大型的 library 可以提高构建性能。</p> <div class="language- extra-class"><pre class="language-text"><code>module.exports = {
+  mode: 'devleopment',
+  entry: './src/index.js',
+  ...
+  module: {
+    noParse: /jquery|lodash/,
+    // 从 webpack 3.0.0 开始,可以使用函数，如下所示
+    // noParse: function(content) {
+    //   return /jquery|lodash/.test(content);
+    // }
+  }
+  ...
+};
+</code></pre></div><h4 id="module-rules"><a href="#module-rules" aria-hidden="true" class="header-anchor">#</a> module.rules</h4> <p>创建模块时，匹配请求的规则数组。这些规则能够修改模块的创建方式。这些规则能够对模块(module)应用 loader，或者修改解析器(parser)。</p> <p>创建模块时，匹配请求的规则数组。这些规则能够修改模块的创建方式。这些规则能够对模块(module)应用 loader，或者修改解析器(parser)。</p> <div class="language- extra-class"><pre class="language-text"><code>module.exports = {
+  ...
+  module: {
+    noParse: /jquery|lodash/,
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      }
+    ]
+  }
+  ...
+};
+</code></pre></div><h4 id="module-rule"><a href="#module-rule" aria-hidden="true" class="header-anchor">#</a> module Rule</h4> <p>Rule 条件详解</p> <ul><li>字符串：匹配输入必须以提供的字符串开始。是的。目录绝对路径或文件绝对路径。</li> <li>正则表达式：test 输入值。</li> <li>函数：调用输入的函数，必须返回一个真值(truthy value)以匹配。</li> <li>条件数组：至少一个匹配条件。</li> <li>对象：匹配所有属性。每个属性都有一个定义行为。</li></ul> <h4 id="rule-test"><a href="#rule-test" aria-hidden="true" class="header-anchor">#</a> Rule.test</h4> <ul><li>{ test: Condition }：匹配特定条件。一般是提供一个正则表达式或正则表达式的数组，但这不是强制的。</li></ul> <div class="language- extra-class"><pre class="language-text"><code>module.exports = {
+  ...
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      }
+    ]
+  }
+  ...
+};
+</code></pre></div><p>其他的条件比如：</p> <ul><li><code>{ include: Condition }</code>:匹配特定条件。一般是提供一个字符串或者字符串数组，但这不是强制的。</li> <li><code>{ exclude: Condition }</code>:排除特定条件。一般是提供一个字符串或字符串数组，但这不是强制的。</li> <li><code>{ and: [Condition] }</code>:必须匹配数组中的所有条件</li> <li><code>{ or: [Condition] }</code>:匹配数组中任何一个条件</li> <li><code>{ not: [Condition] }</code>:必须排除这个条件</li></ul> <div class="language- extra-class"><pre class="language-text"><code>module.exports = {
+  ...
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        include: [
+          path.resolve(__dirname, &quot;app/styles&quot;),
+          path.resolve(__dirname, &quot;vendor/styles&quot;)
+        ],
+        use: ['style-loader', 'css-loader']
+      }
+    ]
+  }
+  ...
+};
+</code></pre></div><h4 id="rule-use"><a href="#rule-use" aria-hidden="true" class="header-anchor">#</a> Rule.use</h4> <p>应用于模块指定使用一个 loader。</p> <p>Loaders can be chained by passing multiple loaders, which will be applied from right to left (last to first configured).</p> <p>加载器可以链式传递，从右向左进行应用到模块上。</p> <div class="language- extra-class"><pre class="language-text"><code>use: [
+  'style-loader',
+  {
+    loader: 'css-loader'
+  },
+  {
+    loader: 'less-loader',
+    options: {
+      noIeCompat: true
+    }
+  }
+];
+</code></pre></div><blockquote><p>传递字符串（如：use: [ &quot;style-loader&quot; ]）是 loader 属性的简写方式（如：use: [ { loader: &quot;style-loader &quot;} ]）。</p></blockquote> <h3 id="加载-sass-文件"><a href="#加载-sass-文件" aria-hidden="true" class="header-anchor">#</a> 加载 Sass 文件</h3> <p>加载 Sass 需要<code>sass-loader</code>。</p> <p>安装</p> <div class="language- extra-class"><pre class="language-text"><code>npm install sass-loader node-sass webpack --save-dev
+</code></pre></div><p>使用：</p> <div class="language- extra-class"><pre class="language-text"><code>// webpack.config.js
+module.exports = {
+  ...
+  module: {
+    rules: [{
+      test: /\.scss$/,
+      use: [{
+        loader: &quot;style-loader&quot;
+      }, {
+        loader: &quot;css-loader&quot;
+      }, {
+        loader: &quot;sass-loader&quot;
+      }]
+    }]
+  }
+};
+
+// a.scss
+$bgColor: pink;
+.box{
+    background-color: $bgColor;
+    font-size: 30px;
+}
+.test{
+    span {
+        color: greenyellow;
+    }
+}
+
+// index.js
+import _ from 'lodash';
+import './style.css';
++ import './a.scss';
+
+function createDomElement() {
+  var dom = document.createElement('div');
+  dom.innerHTML = _.join(['aicoder', '.com', ' wow'], '');
+//   dom.className = 'hello';
+ +  dom.classList.add('box');
+  return dom;
+}
+
+document.body.appendChild(createDomElement());
+</code></pre></div><p>为 sass 文件注入内容：</p> <p>如果你要将 Sass 代码放在实际的入口文件(entry file)之前，可以设置 data 选项。此时 sass-loader 不会覆盖 data 选项，只会将它拼接在入口文件的内容之前。</p> <div class="language- extra-class"><pre class="language-text"><code>{
+    loader: &quot;sass-loader&quot;,
+    options: {
+        data: &quot;$env: &quot; + process.env.NODE_ENV + &quot;;&quot;
+    }
+}
+</code></pre></div><blockquote><p>注意：由于代码注入, 会破坏整个入口文件的 source map。 通常一个简单的解决方案是，多个 Sass 文件入口。</p></blockquote> <h3 id="创建-source-map"><a href="#创建-source-map" aria-hidden="true" class="header-anchor">#</a> 创建 Source Map</h3> <p>在调试中显示scss文件及行数</p> <p><code>css-loader</code>和<code>sass-loader</code>都可以通过该 options 设置启用 sourcemap。</p> <div class="language- extra-class"><pre class="language-text"><code>// webpack.config.js
+module.exports = {
+  ...
+  module: {
+    rules: [{
+      test: /\.scss$/,
+      use: [{
+        loader: &quot;style-loader&quot;
+      }, {
+        loader: &quot;css-loader&quot;,
+        options: {
+          sourceMap: true
+        }
+      }, {
+        loader: &quot;sass-loader&quot;,
+        options: {
+          sourceMap: true
+        }
+      }]
+    }]
+  }
+};Copy to clipboardErrorCopied
+</code></pre></div><h3 id="postcss-处理-loader（附带：添加-css3-前缀）"><a href="#postcss-处理-loader（附带：添加-css3-前缀）" aria-hidden="true" class="header-anchor">#</a> PostCSS 处理 loader（附带：添加 css3 前缀）</h3> <p><a href="https://postcss.org/" target="_blank" rel="noopener noreferrer">PostCSS<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>是一个 CSS 的预处理工具，可以帮助我们：给 CSS3 的属性添加前缀，样式格式校验（stylelint），提前使用 css 的新特性比如：表格布局，更重要的是可以实现 CSS 的模块化，防止 CSS 样式冲突。</p> <p>我们常用的就是使用 PostCSS 进行添加前缀，以此为例：</p> <p>安装</p> <div class="language- extra-class"><pre class="language-text"><code>npm i -D postcss-loader
+npm install autoprefixer --save-dev
+
+# 以下可以不用安装
+# cssnext可以让你写CSS4的语言，并能配合autoprefixer进行浏览器兼容的不全，而且还支持嵌套语法
+$ npm install postcss-cssnext --save-dev
+
+# 类似scss的语法，实际上如果只是想用嵌套的话有cssnext就够了
+$ npm install precss --save-dev
+
+# 在@import css文件的时候让webpack监听并编译
+$ npm install postcss-import --save-dev
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+module.exports = {
+  mode: 'development',
+  entry: './src/index.js',
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, './dist')
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              sourceMap: true,
+              plugins: loader =&gt; [
+                require('autoprefixer')({ browsers: ['&gt; 0.15% in CN'] }) // 添加前缀
+              ]
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true
+            }
+          }
+        ]
+      }
+    ]
+  }
+};
+</code></pre></div><h3 id="样式表抽离成专门的单独文件并且设置版本号"><a href="#样式表抽离成专门的单独文件并且设置版本号" aria-hidden="true" class="header-anchor">#</a> 样式表抽离成专门的单独文件并且设置版本号</h3> <p>首先以下的 css 的处理我们都把 mode 设置为 <code>production</code>。</p> <p>webpack4 开始使用： <code>mini-css-extract-plugin</code>插件, 1-3 的版本可以用： <code>extract-text-webpack-plugin</code></p> <blockquote><p>抽取了样式，就不能再用 <code>style-loader</code>注入到 html 中了。</p></blockquote> <div class="language- extra-class"><pre class="language-text"><code>npm install --save-dev mini-css-extract-plugin
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>// webpack.product.config.js
+// 部署模式
+
+// 最终部署模式文件
+// 单独抽取css
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+module.exports = {
+    mode: 'production',
+    entry: './src/index.js',
+    output: {
+        filename: 'main.js',
+        path: path.resolve(__dirname, './dist')
+    },
+    module: {
+        rules: [{
+            test: /\.(sa|sc|c)ss$/,
+            use: [
+                MiniCssExtractPlugin.loader,
+                {
+                    loader: &quot;css-loader&quot;,
+                    options: {
+                        sourceMap: true
+                    }
+                },
+                {
+                    loader: 'postcss-loader',
+                    options: {
+                        ident: 'postcss',
+                        sourceMap: true,
+                        plugins: loader =&gt; [
+                            require('autoprefixer')({
+                                browsers: ['&gt; 0.15% in CN'] // 浏览器范围，包含ie8
+                            }) // 添加前缀
+                        ]
+                    }
+                },
+                {
+                    loader: &quot;sass-loader&quot;,
+                    options: {
+                        sourceMap: true
+                    }
+                }
+            ]
+        }]
+    },
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: '[name].[hash].css', // 设置最终输出的文件名
+            chunkFilename: '[id].css'
+        })
+    ]
+};
+</code></pre></div><p>再次运行打包：</p> <p>npx webpack -h 查看帮助文档</p> <p>npx webpack --config webpack.product.config.js</p> <p>在 dist 目录中已经把 css 抽取到单独的一个 css 文件中了。修改 html，引入此 css 就能看到结果了。</p> <h3 id="压缩-css"><a href="#压缩-css" aria-hidden="true" class="header-anchor">#</a> 压缩 CSS</h3> <p>webpack5 貌似会内置 css 的压缩，webpack4 可以自己设置一个插件即可。</p> <p>压缩 css 插件：<code>optimize-css-assets-webpack-plugin</code></p> <p>安装</p> <div class="language- extra-class"><pre class="language-text"><code>npm i -D optimize-css-assets-webpack-plugin
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const autoprefixer = require('autoprefixer');
+
+module.exports = {
+  mode: 'production',
+  entry: './src/index.js',
+  output: {
+    filename: 'main.[hash].js',
+    path: path.resolve(__dirname, './dist')
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: loader =&gt; [autoprefixer({ browsers: ['&gt; 0.15% in CN'] })]
+            }
+          },
+          {
+            loader: 'sass-loader'
+          }
+        ]
+      }
+    ]
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name][hash].css',
+      chunkFilename: '[id][hash].css'
+    })
+  ],
+  optimization: {
+    minimizer: [new OptimizeCSSAssetsPlugin({})]
+  }
+};
+</code></pre></div><h3 id="js-压缩"><a href="#js-压缩" aria-hidden="true" class="header-anchor">#</a> JS 压缩</h3> <p>压缩需要一个插件： <code>uglifyjs-webpack-plugin</code>, 此插件需要一个前提就是：<code>mode: 'production'</code>.</p> <p>安装</p> <div class="language- extra-class"><pre class="language-text"><code>npm i -D uglifyjs-webpack-plugin
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const autoprefixer = require('autoprefixer');
+
+module.exports = {
+  mode: 'production',
+  entry: './src/index.js',
+  output: {
+    filename: 'main.[hash].js', // 重点！！！！
+    path: path.resolve(__dirname, './dist')
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: loader =&gt; [autoprefixer({ browsers: ['&gt; 0.15% in CN'] })]
+            }
+          },
+          {
+            loader: 'sass-loader'
+          }
+        ]
+      }
+    ]
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name][hash].css', // 重点
+      chunkFilename: '[id][hash].css'
+    })
+  ],
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true // set to true if you want JS source maps
+      }),
+      new OptimizeCSSAssetsPlugin({}) //压缩css
+    ]
+  }
+};
+</code></pre></div><h3 id="解决-css-文件或者-js-文件名字哈希变化的问题"><a href="#解决-css-文件或者-js-文件名字哈希变化的问题" aria-hidden="true" class="header-anchor">#</a> 解决 CSS 文件或者 JS 文件名字哈希变化的问题</h3> <p><code>HtmlWebpackPlugin</code>插件，可以把打包后的 CSS 或者 JS 文件引用直接注入到 HTML 模板中，这样就不用每次手动修改文件引用了。</p> <p>安装</p> <div class="language- extra-class"><pre class="language-text"><code>npm install --save-dev html-webpack-plugin
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const autoprefixer = require('autoprefixer');
+
+module.exports = {
+  mode: 'production',
+  entry: './src/index.js',
+  output: {
+    filename: 'main.[hash].js',
+    path: path.resolve(__dirname, './dist')
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: loader =&gt; [autoprefixer({ browsers: ['&gt; 0.15% in CN'] })]
+            }
+          },
+          {
+            loader: 'sass-loader'
+          }
+        ]
+      }
+    ]
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name][hash].css',
+      chunkFilename: '[id][hash].css'
+    }),
+    new HtmlWebpackPlugin({
+      title: 'AICODER 全栈线下实习', // 默认值：Webpack App
+      filename: 'main.html', // 默认值： 'index.html'
+      template: path.resolve(__dirname, 'src/main.html'), // 注意是src下面的
+      minify: {
+        collapseWhitespace: true, // 是否移除空行
+        removeComments: true, // 是否去掉注释
+        removeAttributeQuotes: true // 移除属性的引号
+      }
+    })
+  ],
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true // set to true if you want JS source maps
+      }),
+      new OptimizeCSSAssetsPlugin({})
+    ]
+  }
+};
+</code></pre></div><h3 id="清理-dist-目录"><a href="#清理-dist-目录" aria-hidden="true" class="header-anchor">#</a> 清理 dist 目录</h3> <p>每次构建，我们的 <code>/dist</code> 文件夹都会保存生成的文件，然后就会非常杂乱。</p> <p>通常，在每次构建前清理 <code>/dist</code> 文件夹，是比较推荐的做法</p> <p><code>clean-webpack-plugin</code> 是一个比较普及的管理插件，让我们安装和配置下。</p> <div class="language- extra-class"><pre class="language-text"><code>npm install clean-webpack-plugin --save-dev
+</code></pre></div><p>webpack.config.js</p> <div class="language- extra-class"><pre class="language-text"><code>  const path = require('path');
+  ....
++ const CleanWebpackPlugin = require('clean-webpack-plugin');
+
+  module.exports = {
+    entry: {
+      app: './src/index.js',
+      print: './src/print.js'
+    },
+    plugins: [
++     new CleanWebpackPlugin(['/dist'])
+      ...
+    ],
+    output: {
+      filename: '[name].bundle.js',
+      path: path.resolve(__dirname, 'dist')
+    }
+    ...
+  };
+</code></pre></div><p>现在执行 <code>npm run build</code>，再检查 <code>/dist</code> 文件夹。如果一切顺利，你现在应该不会再看到旧的文件，只有构建后生成的文件！</p> <p>npm i clean-webpack-plugin@0.1.19 -D  装这个版本</p> <blockquote><p><em>由于最新版本变化@2.0.1</em>之前的写法已经不能使用：<code>new CleanWebpackPlugin(['/dist'])</code>。 官方文档地址：<a href="https://www.npmjs.com/package/clean-webpack-plugin" target="_blank" rel="noopener noreferrer">https://www.npmjs.com/package/clean-webpack-plugin<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> 可以直接设置一个对象参考： <code>new CleanWebpackPlugin({cleanOnceBeforeBuildPatterns: ['**/*', '!static-files*']})</code></p></blockquote></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/gangking/myBlog/edit/master/docs/学习心得/README.md" target="_blank" rel="noopener noreferrer">编辑文档</a> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></div> <div class="last-updated"><span class="prefix">上次更新: </span> <span class="time">2019-7-12 00:04:16</span></div></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/myBlog/assets/js/app.92a10cb3.js" defer></script><script src="/myBlog/assets/js/2.27e617b7.js" defer></script><script src="/myBlog/assets/js/4.f6c91c73.js" defer></script>
+  </body>
+</html>

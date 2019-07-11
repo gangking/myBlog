@@ -52,8 +52,6 @@ module.exports = {
             ],
             '/学习心得/': [
                 '', /* /javascript/ */
-                'React', /* /javascript/javascript1.html */
-                'Vue' /* /javascript/javascript2.html */
             ],
             // fallback 放在最前面，会禁止所有的IP地址访问
             '/': [
