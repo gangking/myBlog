@@ -21,38 +21,13 @@ module.exports = {
     base: '/myBlog/',
     serviceWorker: true,
     themeConfig: {
-        // sidebar: 'auto',
-        // sidebar: [
-        //     ['/', '首页'],
-        //     ['/css/', 'css首页'],
-        //     ['/javascript/', 'javascript首页'],
-        //     ['/about/test', 'about首页']
-        // ],
-        // sidebar: [{
-        //         title: 'Group 1',
-        //         path: '/css/', // 路径
-        //         collapsable: true,// 是否折叠
-        //         sidebarDepth: 1,// 深度1
-        //         children: [
-        //             // '/',
-        //             '/css/',
-        //             '/css/css1'
-        //         ]
-        //     },
-        //     {
-        //         title: 'Group 2',
-        //         children: [ /* ... */ ]
-        //     }
-        // ],
         sidebar: {
             '/css/': [
                 '', /* /css/ */
                 'css1', /* /css/css1.html */
                 'css2' /* /css/css2.html */
             ],
-            '/学习心得/': [
-                '', /* /javascript/ */
-            ],
+            '/studyNotes/': getThemeSidebar('前端开发', '介绍'),
             // fallback 放在最前面，会禁止所有的IP地址访问
             '/': [
                 '', /* / */
@@ -60,8 +35,6 @@ module.exports = {
                 '/about/test', /* /about/test.html */
             ]
         },
-        sidebarDepth: 2,
-        displayAllHeaders: true, // 显示所有页面标题链接
         activeHeaderLinks: false, // 禁用活动标题
         lastUpdated: '上次更新', // string | boolean 将以合适的日期格式显示在每一页的底部
         // 假定是 GitHub. 同时也可以是一个完整的 GitLab URL
@@ -102,21 +75,8 @@ module.exports = {
 
                 ]
             },{
-                text: '学习心得',
-                items: [{
-                        text: 'webpack',
-                        link: '/学习心得/'
-                    },
-                    {
-                        text: 'React',
-                        link: '/学习心得/React/'
-                    },
-                    {
-                        text: 'Vue',
-                        link: '/学习心得/Vue/'
-                    }
-
-                ]
+                text: '前端开发',
+                link: '/studyNotes/'
             },
             {
                 text: 'about',
@@ -125,3 +85,19 @@ module.exports = {
         ]
     }
 }
+
+function getThemeSidebar (groupA, introductionA) {
+    return [
+      {
+        title: groupA,
+        collapsable: false,
+        sidebarDepth: 2,
+        children: [
+          ['', introductionA],
+          'Webpack',
+          'React',
+          'Vue'
+        ]
+      },
+    ]
+  }
