@@ -28,11 +28,11 @@ module.exports = {
                 'css2' /* /css/css2.html */
             ],
             '/studyNotes/': getThemeSidebar('前端开发', '介绍'),
+            '/about/': getMySelfSidebar('关于我','目录'),
             // fallback 放在最前面，会禁止所有的IP地址访问
             '/': [
                 '', /* / */
                 '/about/', /* /about.html */
-                '/about/test', /* /about/test.html */
             ]
         },
         activeHeaderLinks: false, // 禁用活动标题
@@ -79,8 +79,8 @@ module.exports = {
                 link: '/studyNotes/'
             },
             {
-                text: 'about',
-                link: '/about/test'
+                text: '关于我',
+                link: '/about/'
             }
         ]
     }
@@ -97,6 +97,20 @@ function getThemeSidebar (groupA, introductionA) {
           'Webpack',
           'React',
           'Vue'
+        ]
+      },
+    ]
+  }
+
+  function getMySelfSidebar (groupA, introductionA) {
+    return [
+      {
+        title: groupA,
+        collapsable: false,
+        sidebarDepth: 2,
+        children: [
+          ['', introductionA],
+          ['01', '自命不凡，却无足轻重'],
         ]
       },
     ]

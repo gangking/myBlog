@@ -1,15 +1,5 @@
----
-navbar: false
----
+# 关于我 <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/>
 
-## 关于我 <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/>
+目录：
 
-十分热爱生活，喜欢写代码
-
-
-这是更新内容
-这是更新内容
-这是更新内容
-这是更新内容
-这是更新内容
-这是更新内容
+- [自命不凡，却无足轻重](./01.md)
