@@ -8,7 +8,7 @@
     <link rel="icon" href="/myBlog/favicon.ico">
   <link rel="manifest" href="/myBlog/manifest.json">
     
-    <link rel="preload" href="/myBlog/assets/css/0.styles.bd3d9b31.css" as="style"><link rel="preload" href="/myBlog/assets/js/app.dc6dbf4f.js" as="script"><link rel="preload" href="/myBlog/assets/js/2.27e617b7.js" as="script"><link rel="preload" href="/myBlog/assets/js/4.9733778e.js" as="script"><link rel="prefetch" href="/myBlog/assets/js/10.83534313.js"><link rel="prefetch" href="/myBlog/assets/js/11.f3f405af.js"><link rel="prefetch" href="/myBlog/assets/js/12.4e368266.js"><link rel="prefetch" href="/myBlog/assets/js/13.22895aff.js"><link rel="prefetch" href="/myBlog/assets/js/14.ecd7ad1e.js"><link rel="prefetch" href="/myBlog/assets/js/15.acab2bd3.js"><link rel="prefetch" href="/myBlog/assets/js/3.a683082a.js"><link rel="prefetch" href="/myBlog/assets/js/5.09021a2b.js"><link rel="prefetch" href="/myBlog/assets/js/6.29cef5b0.js"><link rel="prefetch" href="/myBlog/assets/js/7.b76f24c9.js"><link rel="prefetch" href="/myBlog/assets/js/8.eeb33f36.js"><link rel="prefetch" href="/myBlog/assets/js/9.10dfa91e.js">
+    <link rel="preload" href="/myBlog/assets/css/0.styles.bd3d9b31.css" as="style"><link rel="preload" href="/myBlog/assets/js/app.a4deebc8.js" as="script"><link rel="preload" href="/myBlog/assets/js/2.27e617b7.js" as="script"><link rel="preload" href="/myBlog/assets/js/4.bfc72fe8.js" as="script"><link rel="prefetch" href="/myBlog/assets/js/10.cc6be376.js"><link rel="prefetch" href="/myBlog/assets/js/11.4fe1f701.js"><link rel="prefetch" href="/myBlog/assets/js/12.2c55d1b3.js"><link rel="prefetch" href="/myBlog/assets/js/13.cdb03914.js"><link rel="prefetch" href="/myBlog/assets/js/14.2930dc46.js"><link rel="prefetch" href="/myBlog/assets/js/15.acab2bd3.js"><link rel="prefetch" href="/myBlog/assets/js/3.a683082a.js"><link rel="prefetch" href="/myBlog/assets/js/5.09021a2b.js"><link rel="prefetch" href="/myBlog/assets/js/6.1f3ce04d.js"><link rel="prefetch" href="/myBlog/assets/js/7.93dfdc40.js"><link rel="prefetch" href="/myBlog/assets/js/8.49a59b0b.js"><link rel="prefetch" href="/myBlog/assets/js/9.9fa70793.js">
     <link rel="stylesheet" href="/myBlog/assets/css/0.styles.bd3d9b31.css">
   </head>
   <body>
@@ -984,8 +984,35 @@ module.exports = merge(common, prodConfig)
     ignored: /node_modules/, // 忽略监控的文件夹，正则
     aggregateTimeout: 300 // 默认值，当第一个文件更改，会在重新构建前增加延迟
   }
-}Copy to clipboardErrorCopied
-</code></pre></div><p>如何启用热更新呢？</p></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/gangking/myBlog/edit/master/docs/studyNotes/Webpack.md" target="_blank" rel="noopener noreferrer">编辑文档</a> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></div> <div class="last-updated"><span class="prefix">上次更新: </span> <span class="time">2019-7-15 00:15:47</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+}
+</code></pre></div><p>如何启用热更新呢？</p> <p>webpack.config.js</p> <div class="language- extra-class"><pre class="language-text"><code>  const path = require('path');
+  const HtmlWebpackPlugin = require('html-webpack-plugin');
+  const CleanWebpackPlugin = require('clean-webpack-plugin');
++ const webpack = require('webpack');
+
+  module.exports = {
+    entry: {
+       app: './src/index.js'
+    },
+    devtool: 'inline-source-map',
+    devServer: {
+      contentBase: './dist',
++     hot: true
+    },
+    plugins: [
+      new CleanWebpackPlugin(['dist']),
+      new HtmlWebpackPlugin({
+        title: 'Hot Module Replacement'
+      }),
++     new webpack.NamedModulesPlugin(),  // 更容易查看(patch)的依赖
++     new webpack.HotModuleReplacementPlugin()  // 替换插件
+    ],
+    output: {
+      filename: '[name].bundle.js',
+      path: path.resolve(__dirname, 'dist')
+    }
+  };
+</code></pre></div><p>注意：配置入口文件时改成index.html</p></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/gangking/myBlog/edit/master/docs/studyNotes/Webpack.md" target="_blank" rel="noopener noreferrer">编辑文档</a> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></div> <div class="last-updated"><span class="prefix">上次更新: </span> <span class="time">2019-7-15 00:15:47</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
         ←
         <a href="/myBlog/studyNotes/" class="prev router-link-active">
           介绍
@@ -994,6 +1021,6 @@ module.exports = merge(common, prodConfig)
         </a>
         →
       </span></p></div> </main></div><div class="global-ui"></div></div>
-    <script src="/myBlog/assets/js/app.dc6dbf4f.js" defer></script><script src="/myBlog/assets/js/2.27e617b7.js" defer></script><script src="/myBlog/assets/js/4.9733778e.js" defer></script>
+    <script src="/myBlog/assets/js/app.a4deebc8.js" defer></script><script src="/myBlog/assets/js/2.27e617b7.js" defer></script><script src="/myBlog/assets/js/4.bfc72fe8.js" defer></script>
   </body>
 </html>

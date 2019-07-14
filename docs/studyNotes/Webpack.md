@@ -1489,7 +1489,41 @@ devServer: {
     ignored: /node_modules/, // 忽略监控的文件夹，正则
     aggregateTimeout: 300 // 默认值，当第一个文件更改，会在重新构建前增加延迟
   }
-}Copy to clipboardErrorCopied
+}
 ```
 
 如何启用热更新呢？
+
+webpack.config.js
+
+```
+  const path = require('path');
+  const HtmlWebpackPlugin = require('html-webpack-plugin');
+  const CleanWebpackPlugin = require('clean-webpack-plugin');
++ const webpack = require('webpack');
+
+  module.exports = {
+    entry: {
+       app: './src/index.js'
+    },
+    devtool: 'inline-source-map',
+    devServer: {
+      contentBase: './dist',
++     hot: true
+    },
+    plugins: [
+      new CleanWebpackPlugin(['dist']),
+      new HtmlWebpackPlugin({
+        title: 'Hot Module Replacement'
+      }),
++     new webpack.NamedModulesPlugin(),  // 更容易查看(patch)的依赖
++     new webpack.HotModuleReplacementPlugin()  // 替换插件
+    ],
+    output: {
+      filename: '[name].bundle.js',
+      path: path.resolve(__dirname, 'dist')
+    }
+  };
+```
+
+注意：配置入口文件时改成index.html
