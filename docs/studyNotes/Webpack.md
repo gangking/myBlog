@@ -795,7 +795,7 @@ module.exports = {
 ```
 npm install --save-dev html-webpack-plugin
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
++ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -836,16 +836,16 @@ module.exports = {
       filename: '[name][hash].css',
       chunkFilename: '[id][hash].css'
     }),
-    new HtmlWebpackPlugin({
-      title: 'AICODER 全栈线下实习', // 默认值：Webpack App
-      filename: 'main.html', // 默认值： 'index.html'
-      template: path.resolve(__dirname, 'src/main.html'), // 注意是src下面的
-      minify: {
-        collapseWhitespace: true, // 是否移除空行
-        removeComments: true, // 是否去掉注释
-        removeAttributeQuotes: true // 移除属性的引号
-      }
-    })
+ +   new HtmlWebpackPlugin({
+ +     title: 'AICODER 全栈线下实习', // 默认值：Webpack App
+ +     filename: 'main.html', // 默认值： 'index.html'
+ +    template: path.resolve(__dirname, 'src/main.html'), // 注意是src下面的
+ +     minify: {
+ +       collapseWhitespace: true, // 是否移除空行
+ +       removeComments: true, // 是否去掉注释
+ +       removeAttributeQuotes: true // 移除属性的引号
+ +     }
+ +   })
   ],
   optimization: {
     minimizer: [
@@ -901,3 +901,595 @@ webpack.config.js
  npm i clean-webpack-plugin@0.1.19 -D  装这个版本
 
 > *由于最新版本变化@2.0.1*之前的写法已经不能使用：`new CleanWebpackPlugin(['/dist'])`。 官方文档地址：<https://www.npmjs.com/package/clean-webpack-plugin> 可以直接设置一个对象参考： `new CleanWebpackPlugin({cleanOnceBeforeBuildPatterns: ['**/*', '!static-files*']})`
+
+
+
+### 加载图片与图片优化
+
+在 css 文件或者 sass 文件中添加如下代码
+
+```
+$red: #900;
+$size: 20px;
+
+.box {
+  height: 30px*2;
+  font-size: $size;
+  transform: translate3d( 0, 0, 0 );
++ background: url('../static/1.jpeg')
+}Copy to clipboardErrorCopied
+```
+
+运行打包发现如下错误：
+
+```
+ERROR in ./src/static/1.jpeg 1:0
+Module parse failed: Unexpected character '�' (1:0)
+You may need an appropriate loader to handle this file type.Copy to clipboardErrorCopied
+```
+
+解决方案：`file-loader`处理文件的导入
+
+```
+npm install --save-dev file-loader
+```
+
+webpack.config.js
+
+```
+  const path = require('path');
+
+  module.exports = {
+    entry: './src/index.js',
+    output: {
+      filename: 'bundle.js',
+      path: path.resolve(__dirname, 'dist')
+    },
+    module: {
+      rules: [
+        {
+          test: /\.css$/,
+          use: [
+            'style-loader',
+            'css-loader'
+          ]
+        },
++       {
++         test: /\.(png|svg|jpg|gif)$/,
++         use: [
++           'file-loader'
++         ]
++       }
+      ]
+    }
+  };Copy to clipboardErrorCopied
+```
+
+此时运行打包，发现 dist 目录多了一个图片文件，另外报错不再出现。
+
+
+
+那更进一步，图片如何进行优化呢？
+
+`image-webpack-loader`可以帮助我们对图片进行压缩和优化。
+
+```
+npm install image-webpack-loader --save-dev
+```
+
+使用：webpack.config.js
+
+```
+  const path = require('path');
+
+  module.exports = {
+    entry: './src/index.js',
+    output: {
+      filename: 'bundle.js',
+      path: path.resolve(__dirname, 'dist')
+    },
+    module: {
+      rules: [
+        {
+          test: /\.css$/,
+          use: [
+            'style-loader',
+            'css-loader'
+          ]
+        },
+        {
+          test: /\.(png|svg|jpg|gif|jpeg|ico)$/,
+          use: [
+            'file-loader',
++           {
++             loader: 'image-webpack-loader',
++             options: {
++               mozjpeg: {
++                 progressive: true,
++                 quality: 65
++               },
++               optipng: {
++                 enabled: false,
++               },
++               pngquant: {
++                 quality: '65-90',
++                 speed: 4
++               },
++               gifsicle: {
++                 interlaced: false,
++               },
++               webp: {
++                 quality: 75
++               }
++             }
++           },
+          ]
+        }
+      ]
+    }
+  };Copy to clipboardErrorCopied
+```
+
+此时在运行 webpack，发现会 生成的图片的大小会被压缩很多。
+
+
+
+### 更进一步处理图片成 base64
+
+`url-loader`功能类似于 file-loader，可以把 url 地址对应的文件，打包成 base64 的 DataURL，提高访问的效率。
+
+如何使用：
+
+```
+npm install --save-dev url-loader
+```
+
+webpack.config.js
+
+```
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(png|svg|jpg|gif|jpeg|ico|woff|woff2|eot|ttf|otf)$/,
+        use: [
+          {
+            loader: 'url-loader', // 根据图片大小，把图片优化成base64
+            options: {
+              limit: 10000
+            }
+          },
+          {
+            loader: 'image-webpack-loader', // 先进行图片优化
+            options: {
+              mozjpeg: {
+                progressive: true,
+                quality: 65
+              },
+              optipng: {
+                enabled: false
+              },
+              pngquant: {
+                quality: '65-90',
+                speed: 4
+              },
+              gifsicle: {
+                interlaced: false
+              },
+              webp: {
+                quality: 75
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+};
+```
+
+ 
+
+### 字体的处理（同图片）
+
+由于 css 中可能引用到自定义的字体，处理也是跟图片一致。
+
+```
+const path = require('path');
+
+  module.exports = {
+    entry: './src/index.js',
+    output: {
+      filename: 'bundle.js',
+      path: path.resolve(__dirname, 'dist')
+    },
+    module: {
+      rules: [
+        {
+          test: /\.css$/,
+          use: [
+            'style-loader',
+            'css-loader'
+          ]
+        },
+        {
+          test: /\.(png|svg|jpg|gif)$/,
+          use: [
+            'file-loader'
+          ]
+        },
++       {
++         test: /\.(woff|woff2|eot|ttf|otf)$/,
++         use: [
++           'file-loader'
++         ]
++       }
+      ]
+    }
+  };
+```
+
+
+
+## 开发相关辅助
+
+### 合并两个webpack的js配置文件
+
+开发环境(development)和生产环境(production)配置文件有很多不同点，但是也有一部分是相同的配置内容，如果在两个配置文件中都添加相同的配置节点， 就非常不爽。
+
+`webpack-merge` 的工具可以实现两个配置文件进合并，这样我们就可以把 开发环境和生产环境的公共配置抽取到一个公共的配置文件中。
+
+安装：
+
+```
+npm install --save-dev webpack-merge
+```
+
+例如：
+
+project
+
+```
+  webpack-demo
+  |- package.json
+- |- webpack.config.js 
++ |- webpack.common.js  公共
++ |- webpack.dev.js  开发阶段
++ |- webpack.prod.js  生产阶段
+  |- /dist
+  |- /src
+    |- index.js
+    |- math.js
+  |- /node_modules
+```
+
+webpack.common.js  
+
+```
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+
+module.exports = {
+  entry: './src/index.js',
+  module: {
+    rules: [
+      {
+        test: /\.(png|svg|jpg|gif|jpeg|ico|woff|woff2|eot|ttf|otf)$/,
+        use: [{
+            loader: 'url-loader', // 根据图片大小，把图片优化成base64
+            options: {
+              limit: 10000
+            }
+          },
+          {
+            loader: 'image-webpack-loader', // 先进行图片优化
+            options: {
+              mozjpeg: {
+                progressive: true,
+                quality: 65
+              },
+              optipng: {
+                enabled: false
+              },
+              pngquant: {
+                quality: '65-90',
+                speed: 4
+              },
+              gifsicle: {
+                interlaced: false
+              },
+              webp: {
+                quality: 75
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'AICODER 全栈线下实习', // 默认值：Webpack App
+      filename: 'main.html', // 默认值： 'index.html'
+      template: path.resolve(__dirname, 'src/main.html'),
+      minify: {
+        collapseWhitespace: true,
+        removeComments: true,
+        removeAttributeQuotes: true // 移除属性的引号
+      }
+    }),
+    new CleanWebpackPlugin(['dist']) // 清除dist
+  ]
+};
+```
+
+webpack.dev.js
+
+```
+const path = require('path');
+const merge = require('webpack-merge');
+const common = require('./webpack.common.js');
+
+let devConfig = {
+    mode: 'production',
+    output: {
+        filename: 'main.[hash].js',
+        path: path.resolve(__dirname, './dist')
+    },
+    module: {
+        rules: [{
+            test: /\.(sa|sc|c)ss$/,
+            use: [
+                'style-loader',
+                {
+                    loader: 'css-loader',
+                    options: {
+                        sourceMap: true
+                    }
+                },
+                {
+                    loader: 'postcss-loader',
+                    options: {
+                        ident: 'postcss',
+                        sourceMap: true,
+                        plugins: loader => [require('autoprefixer')({
+                            overrideBrowserslist: ['> 0.15% in CN']
+                        })]
+                    }
+                },
+                {
+                    loader: 'sass-loader',
+                    options: {
+                        sourceMap: true
+                    }
+                }
+            ]
+        }]
+    }
+};
+
+module.exports = merge(common, devConfig)
+```
+
+webpack.prod.js
+
+```
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
+const merge = require('webpack-merge');
+const common = require('./webpack.common.js');
+
+let prodConfig = module.exports = {
+    mode: 'production',
+    entry: './src/index.js',
+    output: {
+        filename: 'main.[hash].js',
+        path: path.resolve(__dirname, './dist')
+    },
+    module: {
+        rules: [{
+            test: /\.(sa|sc|c)ss$/,
+            use: [
+                'style-loader',
+                {
+                    loader: 'css-loader'
+                },
+                {
+                    loader: 'postcss-loader',
+                    options: {
+                        ident: 'postcss',
+                        plugins: loader => [require('autoprefixer')({
+                            overrideBrowserslist: ['> 0.15% in CN']
+                        })]
+                    }
+                },
+                {
+                    loader: 'sass-loader'
+                }
+            ]
+        }]
+    },
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: '[name][hash].css',
+            chunkFilename: '[id][hash].css'
+        })
+    ],
+    optimization: {
+        minimizer: [
+            new UglifyJsPlugin({
+                cache: true,
+                parallel: true,
+                sourceMap: true // 如果需要JS源映射，请设置为true
+            }),
+            new OptimizeCSSAssetsPlugin({})
+        ]
+    }
+};
+
+module.exports = merge(common, prodConfig)
+```
+
+
+
+### js 使用 source map
+
+当 webpack 打包源代码时，可能会很难追踪到错误和警告在源代码中的原始位置。例如，如果将三个源文件（a.js, b.js 和 c.js）打包到一个 bundle（bundle.js）中，而其中一个源文件包含一个错误，那么堆栈跟踪就会简单地指向到 bundle.js。
+
+使用 `inline-source-map` 选项，这有助于解释说明 js 原始出错的位置。（**不要用于生产环境**）：
+
+webpack.config.js
+
+```
+  const path = require('path');
+  const HtmlWebpackPlugin = require('html-webpack-plugin');
+  const CleanWebpackPlugin = require('clean-webpack-plugin');
+
+  module.exports = {
+    entry: {
+      app: './src/index.js',
+      print: './src/print.js'
+    },
++   devtool: 'inline-source-map',
+    plugins: [
+      new CleanWebpackPlugin(['dist']),
+      new HtmlWebpackPlugin({
+        title: 'Development'
+      })
+    ],
+    output: {
+      filename: '[name].bundle.js',
+      path: path.resolve(__dirname, 'dist')
+    }
+  };Copy to clipboardErrorCopied
+```
+
+![inline-source-map](https://malun666.github.io/aicoder_vip_doc/images/webpackinline.png)
+
+ 
+
+### 监控文件变化，自动编译。使用观察模式
+
+每次修改完毕后，都手动编译异常痛苦。最简单解决的办法就是启动`watch`。
+
+```
+npx webpack --watch
+```
+
+当然可以添加到 npm 的 script 中
+
+package.json
+
+```
+{
+    "name": "development",
+    "version": "1.0.0",
+    "description": "",
+    "main": "webpack.config.js",
+    "scripts": {
+     	"test": "echo \"Error: no test specified\" && exit 1",
+    	"dev": "npx webpack --config webpack.dev.js",
+    	"watch": "npx webpack --watch --config webpack.dev.js",
+    	"build": "npx webpack --config webpack.prod.js"
+    },
+    "devDependencies": {
+      "clean-webpack-plugin": "^0.1.16",
+      "css-loader": "^0.28.4",
+      "csv-loader": "^2.1.1",
+      "file-loader": "^0.11.2",
+      "html-webpack-plugin": "^2.29.0",
+      "style-loader": "^0.18.2",
+      "webpack": "^3.0.0",
+      "xml-loader": "^1.2.1"
+    }
+  }Copy to clipboardErrorCopied
+```
+
+但是有个 bug，就是每次我们修改 js 或者 css 文件后，要看到修改后的 html 的变化，需要我自己重新刷新页面。
+
+如何能不刷新页面，自动更新变化呢？
+
+
+
+### 使用 webpack-dev-server 和热更新
+
+webpack-dev-server 为你提供了一个简单的 web 服务器，并且能够实时重新加载(live reloading)。
+
+安装
+
+```
+npm install --save-dev webpack-dev-server
+```
+
+webpack.config.js
+
+```
+  const path = require('path');
+  const HtmlWebpackPlugin = require('html-webpack-plugin');
+  const CleanWebpackPlugin = require('clean-webpack-plugin');
+
+  module.exports = {
+    entry: {
+      app: './src/index.js',
+      print: './src/print.js'
+    },
+    devtool: 'inline-source-map',
++   devServer: {
++     contentBase: './dist'
++   },
+    plugins: [
+      new CleanWebpackPlugin(['dist']),
+      new HtmlWebpackPlugin({
+        title: 'Development'
+      })
+    ],
+    output: {
+      filename: '[name].bundle.js',
+      path: path.resolve(__dirname, 'dist')
+    }
+  };Copy to clipboardErrorCopied
+```
+
+启动此 webserver：
+
+```
+webpack-dev-server --open
+```
+
+[官网其他配置](https://webpack.docschina.org/configuration/dev-server/)：
+
+```
+devServer: {
+  clientLogLevel: 'warning', // 可能的值有 none, error, warning 或者 info（默认值)
+  hot: true,  // 启用 webpack 的模块热替换特性, 这个需要配合： webpack.HotModuleReplacementPlugin插件
+  contentBase:  path.join(__dirname, "dist"), // 告诉服务器从哪里提供内容， 默认情况下，将使用当前工作目录作为提供内容的目录
+  compress: true, // 一切服务都启用gzip 压缩
+  host: '0.0.0.0', // 指定使用一个 host。默认是 localhost。如果你希望服务器外部可访问 0.0.0.0
+  port: 8080, // 端口
+  open: true, // 是否打开浏览器
+  overlay: {  // 出现错误或者警告的时候，是否覆盖页面线上错误消息。
+    warnings: true,
+    errors: true
+  },
+  publicPath: '/', // 此路径下的打包文件可在浏览器中访问。
+  proxy: {  // 设置代理
+    "/api": {  // 访问api开头的请求，会跳转到  下面的target配置
+      target: "http://192.168.0.102:8080",
+      pathRewrite: {"^/api" : "/mockjsdata/5/api"}
+    }
+  },
+  quiet: true, // necessary for FriendlyErrorsPlugin. 启用 quiet 后，除了初始启动信息之外的任何内容都不会被打印到控制台。这也意味着来自 webpack 的错误或警告在控制台不可见。
+  watchOptions: { // 监视文件相关的控制选项
+    poll: true,   // webpack 使用文件系统(file system)获取文件改动的通知。在某些情况下，不会正常工作。例如，当使用 Network File System (NFS) 时。Vagrant 也有很多问题。在这些情况下，请使用轮询. poll: true。当然 poll也可以设置成毫秒数，比如：  poll: 1000
+    ignored: /node_modules/, // 忽略监控的文件夹，正则
+    aggregateTimeout: 300 // 默认值，当第一个文件更改，会在重新构建前增加延迟
+  }
+}Copy to clipboardErrorCopied
+```
+
+如何启用热更新呢？
