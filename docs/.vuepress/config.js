@@ -1,6 +1,6 @@
 module.exports = {
-    title: '武人熊大大',
-    description: '武人熊大大的个人博客文档，vuepress文档', // 优化SEO
+    title: 'MrXiong',
+    description: '一名前端攻城狮的个人博客，用于个人学习提升，也会对日常学习做些记录（包括前端开发学习心得，以及工作中遇到的一些问题）。', // 优化SEO
     locales: {
         // 键名是该语言所属的子路径
         // 作为特例，默认语言可以使用 '/' 作为其路径。
@@ -55,7 +55,7 @@ module.exports = {
             }
         },
         nav: [{
-                text: 'Home',
+                text: '首页',
                 link: '/'
             },
             {
