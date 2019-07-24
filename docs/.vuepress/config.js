@@ -1,6 +1,6 @@
 module.exports = {
     title: 'MrXiong',
-    description: '所有的这些迷茫和困惑，都可以从了解自身得到解决。', // 优化SEO
+    description: '熊刚的个人博客首页，熊刚的技术作品，熊刚的生活成长', // 优化SEO
     locales: {
         // 键名是该语言所属的子路径
         // 作为特例，默认语言可以使用 '/' 作为其路径。

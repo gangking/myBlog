@@ -1,7 +1,7 @@
 {
-  "name": "myBlog",
+  "name": "myblog",
   "version": "1.0.0",
-  "description": "",
+  "description": "熊刚的个人博客首页，熊刚的技术作品，熊刚的生活成长",
   "main": "index.js",
   "scripts": {
     "docs:dev": "vuepress dev docs",

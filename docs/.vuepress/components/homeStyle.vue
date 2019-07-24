@@ -10,7 +10,6 @@ export default {};
 
 <style lang="styl" scoped>
 .box {
-  width: 350px;
   height: 100%;
   margin: 0 auto;
   overflow: hidden;
