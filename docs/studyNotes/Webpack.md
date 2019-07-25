@@ -1804,3 +1804,554 @@ module.exports = {
 
 
 此时eslint的配置就结束了。
+
+
+
+### 到此为止，一个完整的开发阶段的webpack的配置文件
+
+```
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const autoprefixer = require('autoprefixer');
+const webpack = require('webpack');
+
+module.exports = {
+  mode: 'development',
+  entry: './src/index.js',
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, './dist')
+  },
+  devtool: 'inline-source-map',
+  devServer: {
+    clientLogLevel: 'warning', // 可能的值有 none, error, warning 或者 info（默认值)
+    hot: true, // 启用 webpack 的模块热替换特性, 这个需要配合： webpack.HotModuleReplacementPlugin插件
+    contentBase: path.join(__dirname, "dist"), // 告诉服务器从哪里提供内容， 默认情况下，将使用当前工作目录作为提供内容的目录
+    compress: true, // 一切服务都启用gzip 压缩
+    host: '0.0.0.0', // 指定使用一个 host。默认是 localhost。如果你希望服务器外部可访问 0.0.0.0
+    port: 8085, // 端口
+    open: true, // 是否打开浏览器
+    overlay: { // 出现错误或者警告的时候，是否覆盖页面线上错误消息。
+      warnings: true,
+      errors: true
+    },
+    publicPath: '/', // 此路径下的打包文件可在浏览器中访问。
+    proxy: { // 设置代理
+      "/api": { // 访问api开头的请求，会跳转到  下面的target配置
+        target: "http://192.168.0.102:8080",
+        pathRewrite: {
+          "^/api": "/mockjsdata/5/api"
+        }
+      }
+    },
+    quiet: true, // necessary for FriendlyErrorsPlugin. 启用 quiet 后，除了初始启动信息之外的任何内容都不会被打印到控制台。这也意味着来自 webpack 的错误或警告在控制台不可见。
+    watchOptions: { // 监视文件相关的控制选项
+      poll: true, // webpack 使用文件系统(file system)获取文件改动的通知。在某些情况下，不会正常工作。例如，当使用 Network File System (NFS) 时。Vagrant 也有很多问题。在这些情况下，请使用轮询. poll: true。当然 poll也可以设置成毫秒数，比如：  poll: 1000
+      ignored: /node_modules/, // 忽略监控的文件夹，正则
+      aggregateTimeout: 300 // 默认值，当第一个文件更改，会在重新构建前增加延迟
+    }
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /(node_modules)/, // 加快编译速度，不包含node_modules文件夹内容
+        use: [{
+          loader: 'babel-loader'
+        },{
+          loader: 'eslint-loader',
+          options: {
+            fix: true
+          }
+        }]
+      },
+      {
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          'style-loader', {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
+          }, {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              sourceMap: true,
+              plugins: (loader) => [autoprefixer({browsers: ['> 0.15% in CN']})]
+            }
+          }, {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true
+            }
+          }
+        ]
+      }, {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000
+            }
+          }
+        ]
+      }, {
+        test: /\.(png|svg|jpg|gif|jpeg|ico)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000
+            }
+          }, {
+            loader: 'image-webpack-loader',
+            options: {
+              mozjpeg: {
+                progressive: true,
+                quality: 65
+              },
+              optipng: {
+                enabled: false
+              },
+              pngquant: {
+                quality: '65-90',
+                speed: 4
+              },
+              gifsicle: {
+                interlaced: false
+              },
+              webp: {
+                quality: 75
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  plugins: [
+    new MiniCssExtractPlugin({filename: '[name].css', chunkFilename: '[id].css'}),
+    new CleanWebpackPlugin(['dist']),
+    new webpack.NamedModulesPlugin(), // 更容易查看(patch)的依赖
+    new webpack.HotModuleReplacementPlugin(), // 替换插件
+    new HtmlWebpackPlugin({
+      title: 'AICODER 全栈线下实习', // 默认值：Webpack App
+      filename: 'index.html', // 默认值： 'index.html'
+      minify: {
+        collapseWhitespace: true,
+        removeComments: true,
+        removeAttributeQuotes: true, // 移除属性的引号
+      },
+      template: path.resolve(__dirname, 'src/index.html')
+    })
+  ],
+  optimization: {}
+};
+
+```
+
+用于生产环境的配置
+
+```
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const autoprefixer = require('autoprefixer');
+
+module.exports = {
+  mode: 'production',
+  entry: './src/index.js',
+  output: {
+    filename: 'main.[hash].js',
+    path: path.resolve(__dirname, './dist')
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /(node_modules)/, // 加快编译速度，不包含node_modules文件夹内容
+        use: [{
+          loader: 'babel-loader'
+        },{
+          loader: 'eslint-loader',
+          options: {
+            fix: true
+          }
+        }]
+      },
+      {
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          MiniCssExtractPlugin.loader, {
+            loader: 'css-loader'
+          }, {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: (loader) => [autoprefixer({browsers: ['> 0.15% in CN']})]
+            }
+          }, {
+            loader: 'sass-loader'
+          }
+        ]
+      }, {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000
+            }
+          }
+        ]
+      }, {
+        test: /\.(png|svg|jpg|gif|jpeg|ico)$/,
+        use: [
+          'file-loader', {
+            loader: 'image-webpack-loader',
+            options: {
+              mozjpeg: {
+                progressive: true,
+                quality: 65
+              },
+              optipng: {
+                enabled: false
+              },
+              pngquant: {
+                quality: '65-90',
+                speed: 4
+              },
+              gifsicle: {
+                interlaced: false
+              },
+              webp: {
+                quality: 75
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  plugins: [
+    new MiniCssExtractPlugin({filename: '[name][hash].css', chunkFilename: '[id][hash].css'}),
+    new CleanWebpackPlugin(['dist']),
+    new HtmlWebpackPlugin({
+      title: 'AICODER 全栈线下实习', // 默认值：Webpack App
+      filename: 'index.html', // 默认值： 'index.html'
+      template: path.resolve(__dirname, 'src/index.html'),
+      minify: {
+        collapseWhitespace: true,
+        removeComments: true,
+        removeAttributeQuotes: true, // 移除属性的引号
+      }
+    })
+  ],
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true, parallel: true, sourceMap: true // set to true if you want JS source maps
+      }),
+      new OptimizeCSSAssetsPlugin({})
+    ]
+  }
+};
+```
+
+
+
+## 解析(resolve)
+
+配置模块如何解析。比如： `import _ from 'lodash'` ,其实是加载解析了lodash.js文件。此配置就是设置加载和解析的方式。
+
+- `resolve.alias`
+
+创建 import 或 require 的别名，来确保模块引入变得更简单。例如，一些位于 src/ 文件夹下的常用模块：
+
+```
+// webpack.config.js
+module.exports = {
+  mode: 'production',
+  entry: './src/index.js',
+  output: {
+    filename: 'main.[hash].js',
+    path: path.resolve(__dirname, './dist')
+  },
++ resolve: {
++   alias: {
++     vue$: path.resolve(__dirname, 'src/lib/vue/dist/vue.esm.js'),
++     '@': path.resolve(__dirname, 'src/')
++   }
++ }
+  ...
+}
+
+// index.js
+// 在我们的index.js文件中，就可以直接import
+import vue from 'vue';
+// 等价于
+import vue from  'src/lib/vue/dist/vue.esm.js';
+
+```
+
+- `resolve.extensions`的应用
+
+自动解析确定的扩展。
+
+```
+// webpack.config.js
+module.exports = {
+  mode: 'production',
+  entry: './src/index.js',
+  output: {
+    filename: 'main.[hash].js',
+    path: path.resolve(__dirname, './dist')
+  },
+  resolve: {
+    alias: {
+      vue$: path.resolve(__dirname, 'src/lib/vue/dist/vue.esm.js'),
+      '@': path.resolve(__dirname, 'src/')
+    },
++   extensions: [".js", ".vue",".json"]   // 默认值: [".js",".json"]配置模块可以省略的后缀名
+  }
+  ...
+}
+```
+
+> 给定对象的键后的末尾添加 $，以表示精准匹配
+
+
+
+## 外部扩展(externals)
+
+externals 配置选项提供了「从输出的 bundle 中排除依赖」的方法。 [文档](https://webpack.docschina.org/configuration/externals/)
+
+例如，从 CDN 引入 jQuery，而不是把它打包：
+
+index.html
+
+```
+<script
+  src="https://code.jquery.com/jquery-3.1.0.js"
+  integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk="
+  crossorigin="anonymous">
+</script>
+```
+
+webpack.config.js
+
+```
+// webpack.config.js
+module.exports = {
+  mode: 'production',
+  entry: './src/index.js',
+  output: {
+    filename: 'main.[hash].js',
+    path: path.resolve(__dirname, './dist')
+  },
+  alias: {
+    extensions: [".js", ".vue",".json"]   // 默认值: [".js",".json"]
+    vue$: path.resolve(__dirname, 'src/lib/vue/dist/vue.esm.js'),
+    '@': path.resolve(__dirname, 'src/')
+  },
++ externals: {
++   jquery: 'jQuery'
++ },
+  ...
+}
+
+
+即：
+resolve: {
+        alias: {
+            vue$: path.resolve(__dirname, 'src/lib/vue/dist/vue.esm.js'),
+            '@': path.resolve(__dirname, 'src/')
+        },
+        extensions: [".js", ".vue", ".json"] // 默认值: [".js",".json"]
+    },
+    externals: {
+        jquery: 'jQuery'
+    },
+```
+
+这样就剥离了那些不需要改动的依赖模块，换句话，下面展示的代码还可以正常运行：
+
+```
+import $ from 'jquery';
+
+$('.my-element').animate(...);
+```
+
+具有外部依赖(external dependency)的 bundle 可以在各种模块上下文(module context)中使用，例如 CommonJS, AMD, 全局变量和 ES2015 模块。外部 library 可能是以下任何一种形式：
+
+- root：可以通过一个全局变量访问 library（例如，通过 script 标签）。
+- commonjs：可以将 library 作为一个 CommonJS 模块访问。
+- commonjs2：和上面的类似，但导出的是 module.exports.default.
+- amd：类似于 commonjs，但使用 AMD 模块系统。
+
+不同的配置方式：
+
+```
+externals : {
+  react: 'react'
+}
+
+// 或者
+
+externals : {
+  lodash : {
+    commonjs: "lodash",
+    amd: "lodash",
+    root: "_" // 指向全局变量
+  }
+}
+
+// 或者
+
+externals : {
+  subtract : {
+    root: ["math", "subtract"]   // 相当于： window.math.substract
+  }
+}
+```
+
+ [构建目标(targets)](https://malun666.github.io/aicoder_vip_doc/#/pages/vip_2webpack?id=%e6%9e%84%e5%bb%ba%e7%9b%ae%e6%a0%87targets)
+
+webpack 能够为多种环境或 target 构建编译。想要理解什么是 target 的详细信息，请阅读 target 概念页面。
+
+`target`: 告知 webpack 为目标(target)指定一个环境。
+
+可以支持以下字符串值：
+
+| 选项              | 描述                                                         |
+| ----------------- | ------------------------------------------------------------ |
+| async-node        | 编译为类 Node.js 环境可用（使用 fs 和 vm 异步加载分块）      |
+| electron-main     | 编译为 Electron 主进程。                                     |
+| electron-renderer | 编译为 Electron 渲染进程，使用 JsonpTemplatePlugin, FunctionModulePlugin 来为浏览器环境提供目标，使用 NodeTargetPlugin 和 ExternalsPlugin 为 CommonJS 和 Electron 内置模块提供目标。 |
+| node              | 编译为类 Node.js 环境可用（使用 Node.js require 加载 chunk） |
+| node-webkit       | 编译为 Webkit 可用，并且使用 jsonp 去加载分块。支持 Node.js 内置模块和 nw.gui 导入（实验性质） |
+| web               | 编译为类浏览器环境里可用（默认）                             |
+| webworker         | 编译成一个 WebWorker                                         |
+
+例如，当 target 设置为 "electron"，webpack 引入多个 electron 特定的变量.
+
+webpack.config.js
+
+```
+// webpack.config.js
+module.exports = {
+  mode: 'production',
+  entry: './src/index.js',
+  output: {
+    filename: 'main.[hash].js',
+    path: path.resolve(__dirname, './dist')
+  },
+  alias: {
+    extensions: [".js", ".vue",".json"]   // 默认值: [".js",".json"]
+    vue$: path.resolve(__dirname, 'src/lib/vue/dist/vue.esm.js'),
+    '@': path.resolve(__dirname, 'src/')
+  },
+  externals: {
+    jquery: 'jQuery'
+  },
++ target: 'node'
+  ...
+}Copy to clipboardErrorCopied
+```
+
+## 相关的loader列表
+
+`webpack` 可以使用 loader 来预处理文件。这允许你打包除 JavaScript 之外的任何静态资源。你可以使用 Node.js 来很简单地编写自己的 loader。
+
+### 文件
+
+- `raw-loader` 加载文件原始内容（utf-8）
+- `val-loader` 将代码作为模块执行，并将 exports 转为 JS 代码
+- `url-loader` 像 file loader 一样工作，但如果文件小于限制，可以返回 [data URL](https://tools.ietf.org/html/rfc2397)
+- `file-loader` 将文件发送到输出文件夹，并返回（相对）URL
+
+### JSON
+
+- `json-loader` 加载 [JSON](http://json.org/) 文件（默认包含）
+- `json5-loader` 加载和转译 [JSON 5](https://json5.org/) 文件
+- `cson-loader` 加载和转译 [CSON](https://github.com/bevry/cson#what-is-cson) 文件
+
+### 转换编译(Transpiling)
+
+- `script-loader` 在全局上下文中执行一次 JavaScript 文件（如在 script 标签），不需要解析
+- `babel-loader` 加载 ES2015+ 代码，然后使用 [Babel](https://babeljs.io/) 转译为 ES5
+- `buble-loader` 使用 [Bublé](https://buble.surge.sh/guide/) 加载 ES2015+ 代码，并且将代码转译为 ES5
+- `traceur-loader` 加载 ES2015+ 代码，然后使用 [Traceur](https://github.com/google/traceur-compiler#readme) 转译为 ES5
+- [`ts-loader`](https://github.com/TypeStrong/ts-loader) 或 [`awesome-typescript-loader`](https://github.com/s-panferov/awesome-typescript-loader) 像 JavaScript 一样加载 [TypeScript](https://www.typescriptlang.org/) 2.0+
+- `coffee-loader` 像 JavaScript 一样加载 [CoffeeScript](http://coffeescript.org/)
+
+### 模板(Templating)
+
+- `html-loader` 导出 HTML 为字符串，需要引用静态资源
+- `pug-loader` 加载 Pug 模板并返回一个函数
+- `jade-loader` 加载 Jade 模板并返回一个函数
+- `markdown-loader` 将 Markdown 转译为 HTML
+- [`react-markdown-loader`](https://github.com/javiercf/react-markdown-loader) 使用 markdown-parse parser(解析器) 将 Markdown 编译为 React 组件
+- `posthtml-loader` 使用 [PostHTML](https://github.com/posthtml/posthtml) 加载并转换 HTML 文件
+- `handlebars-loader` 将 Handlebars 转移为 HTML
+- [`markup-inline-loader`](https://github.com/asnowwolf/markup-inline-loader) 将内联的 SVG/MathML 文件转换为 HTML。在应用于图标字体，或将 CSS 动画应用于 SVG 时非常有用。
+
+### 样式
+
+- `style-loader` 将模块的导出作为样式添加到 DOM 中
+- `css-loader` 解析 CSS 文件后，使用 import 加载，并且返回 CSS 代码
+- `less-loader` 加载和转译 LESS 文件
+- `sass-loader` 加载和转译 SASS/SCSS 文件
+- `postcss-loader` 使用 [PostCSS](http://postcss.org/) 加载和转译 CSS/SSS 文件
+- `stylus-loader` 加载和转译 Stylus 文件
+
+### 清理和测试(Linting && Testing)
+
+- `mocha-loader` 使用 [mocha](https://mochajs.org/) 测试（浏览器/NodeJS）
+- [`eslint-loader`](https://github.com/webpack-contrib/eslint-loader) PreLoader，使用 [ESLint](https://eslint.org/) 清理代码
+- `jshint-loader` PreLoader，使用 [JSHint](http://jshint.com/about/) 清理代码
+- `jscs-loader` PreLoader，使用 [JSCS](http://jscs.info/) 检查代码样式
+- `coverjs-loader` PreLoader，使用 [CoverJS](https://github.com/arian/CoverJS) 确定测试覆盖率
+
+### 框架(Frameworks)
+
+- `vue-loader` 加载和转译 [Vue 组件](https://vuejs.org/v2/guide/components.html)
+- `polymer-loader` 使用选择预处理器(preprocessor)处理，并且 `require()` 类似一等模块(first-class)的 Web 组件
+- `angular2-template-loader` 加载和转译 [Angular](https://angular.io/) 组件
+- Awesome 更多第三方 loader，查看 [awesome-webpack 列表](https://github.com/webpack-contrib/awesome-webpack#loaders)。
+
+## 打包分析优化
+
+ [`webpack-bundle-analyzer`](https://www.npmjs.com/package/webpack-bundle-analyzer ) 插件可以帮助我们分析打包后的图形化的报表。
+
+> 仅仅在开发环境使用。
+
+安装
+
+```
+npm install --save-dev webpack-bundle-analyzer
+```
+
+```
++ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+  module.exports = {
+    plugins: [
++     new BundleAnalyzerPlugin()
+    ]
+  }
+```
+
+自动生成一个网页报表，如下所示： ![图片](../static/img/自动生成一个网页报表.gif)
+
+## other
+
+webpack还是有很多其他需要学习的内容。 请参考官网，或者研究一下`vue-cli`的生成的webpack的相关配置，也很值得学习。
+
+另外其他脚手架生成的相关配置都可以研究一下比如：`create-react-app`、`yo`等
