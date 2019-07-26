@@ -2348,7 +2348,7 @@ npm install --save-dev webpack-bundle-analyzer
   }
 ```
 
-自动生成一个网页报表，如下所示： ![图片](../static/img/自动生成一个网页报表.gif)
+自动生成一个网页报表，如下所示： ![图片](../static/img/webtable.gif)
 
 ## other
 
