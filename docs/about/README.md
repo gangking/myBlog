@@ -1,4 +1,6 @@
-# 关于我 <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/>
+# 生活与创作 <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/>
+
+主要转载和创作一些对人生有感悟价值的文章（文采有限肯定是大部分转载了...）。
 
 目录：
 

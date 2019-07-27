@@ -25,6 +25,10 @@ module.exports = {
             '/social/': [
                 'weixin'
             ],
+            '/webpack/': getWebpackSidebar('Webpack开发', '介绍'),
+            '/react/': getReactSidebar('React开发', '介绍'),
+            '/vue/': getVueSidebar('Vue开发', '介绍'),
+            '/es6/': getEs6Sidebar('Es6语法','介绍'),
             '/studyNotes/': getThemeSidebar('前端开发', '介绍'),
             '/about/': getMySelfSidebar('关于我', '目录'),
             '/': [
@@ -60,7 +64,26 @@ module.exports = {
                 ]
             }, {
                 text: '前端技术',
-                link: '/studyNotes/'
+                // link: '/studyNotes/'
+                items: [
+                    {
+                        text: 'Webpack',
+                        link: '/webpack/'
+                    },
+                    {
+                        text: 'React',
+                        link: '/react/'
+                    },
+                    {
+                        text: 'Vue',
+                        link: '/vue/'
+                    },
+                    {
+                        text: 'ES6',
+                        link: '/es6/'
+                    }
+
+                ]
             },
             {
                 text: '生活与创作',
@@ -80,6 +103,54 @@ function getThemeSidebar(groupA, introductionA) {
             'Webpack',
             'React',
             'Vue'
+        ]
+    }, ]
+}
+
+function getWebpackSidebar(groupA, introductionA) {
+    return [{
+        title: groupA,
+        collapsable: false,
+        sidebarDepth: 2,
+        children: [
+            ['', introductionA],
+            '01'
+        ]
+    }, ]
+}
+
+function getEs6Sidebar(groupA, introductionA) {
+    return [{
+        title: groupA,
+        collapsable: false,
+        sidebarDepth: 2,
+        children: [
+            ['', introductionA],
+            '01'
+        ]
+    }, ]
+}
+
+function getVueSidebar(groupA, introductionA) {
+    return [{
+        title: groupA,
+        collapsable: false,
+        sidebarDepth: 2,
+        children: [
+            ['', introductionA],
+            '01'
+        ]
+    }, ]
+}
+
+function getReactSidebar(groupA, introductionA) {
+    return [{
+        title: groupA,
+        collapsable: false,
+        sidebarDepth: 2,
+        children: [
+            ['', introductionA],
+            '01'
         ]
     }, ]
 }
