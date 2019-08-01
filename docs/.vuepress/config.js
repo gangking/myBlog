@@ -150,7 +150,9 @@ function getReactSidebar(groupA, introductionA) {
         sidebarDepth: 2,
         children: [
             ['', introductionA],
-            '01'
+            '01',
+            '02',
+            '03'
         ]
     }, ]
 }
