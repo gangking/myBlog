@@ -150,9 +150,9 @@ function getReactSidebar(groupA, introductionA) {
         sidebarDepth: 2,
         children: [
             ['', introductionA],
-            '01',
-            '02',
-            '03'
+            ['01', 'React基础'],
+            ['02', 'React慕课网笔记'],
+            ['03', '简书项目']
         ]
     }, ]
 }
