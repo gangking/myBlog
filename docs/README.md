@@ -3,7 +3,7 @@ home: true
 heroText: 熊刚的个人博客
 heroImage: /avatar.jpg
 tagline: 跟着感觉走，跟着代码飘
-actionText: 了解我 →
+actionText: 自我修养 →
 actionLink: /about/
 ---
 <homeStyle></homeStyle>
