@@ -1,5 +1,6 @@
 <template>
-  <div class="box">
+  <div class="box"
+       ref="wrapper">
     <div class="txt"
          v-if="screenWidth<750">水滴石穿
     </div>
@@ -13,7 +14,7 @@
 export default {
   data () {
     return {
-      screenWidth: document.body.clientWidth
+      screenWidth: 0
     }
   },
   mounted () {
@@ -26,9 +27,11 @@ export default {
   },
   methods: {
     windowOnresize () {
+      this.screenWidth = this.$refs.wrapper.offsetWidth;
       window.onresize = () => {
-        this.screenWidth = document.body.clientWidth;
+        this.screenWidth = this.$refs.wrapper.offsetWidth;
       }
+
     }
   }
 };
@@ -40,7 +43,7 @@ export default {
   margin: 0 auto;
   overflow: hidden;
   background: #000;
-  filter: blur(3px) contrast(10);
+  filter: blur(2px) contrast(10);
   position: relative;
 }
 
