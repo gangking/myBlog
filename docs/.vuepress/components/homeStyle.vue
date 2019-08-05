@@ -1,11 +1,37 @@
 <template>
   <div class="box">
-    <div class="txt">welcome</div>
+    <div class="txt"
+         v-if="screenWidth<750">水滴石穿
+    </div>
+    <div class="txt"
+         v-else>绳锯木断，水滴石穿
+    </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data () {
+    return {
+      screenWidth: document.body.clientWidth
+    }
+  },
+  mounted () {
+    this.windowOnresize();
+  },
+  watch: {
+    screenWidth (val) {
+      this.screenWidth = val;
+    }
+  },
+  methods: {
+    windowOnresize () {
+      window.onresize = () => {
+        this.screenWidth = document.body.clientWidth;
+      }
+    }
+  }
+};
 </script>
 
 <style lang="styl" scoped>
@@ -15,15 +41,16 @@ export default {};
   overflow: hidden;
   background: #000;
   filter: blur(3px) contrast(10);
+  position: relative;
 }
 
 .txt {
   position: relative;
   width: 80%;
-  height: 106px;
-  line-height: 106px;
+  height: 58px;
+  line-height: 42px;
   color: #fff;
-  font-size: 70px;
+  font-size: 65px;
   text-align: center;
   margin: 100px auto;
   border-bottom: 10px solid #fff;
