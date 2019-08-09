@@ -37,7 +37,7 @@ module.exports = {
         '/about/',
       ]
     },
-    activeHeaderLinks: false,
+    activeHeaderLinks: true,
     lastUpdated: '上次更新',
     repo: 'gangking/myBlog',
     repoLabel: '查看源码',
