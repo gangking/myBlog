@@ -155,7 +155,7 @@ esc+shift+;再输入wq!回车即可
 
 svn是基于客户/服务器模式：
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps2.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记538.png) 
 
  
 
@@ -173,7 +173,7 @@ n 锁定-修改-解锁方案
 
  
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps3.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记761.png) 
 
  
 
@@ -209,7 +209,7 @@ FSFS
 
 下载：http://subversion.apache.org/download.cgi
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps4.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记973.png) 
 
 官方提供的服务端安装包，安装后需要通过命令行操作，适用于专业配置管理员使用。
 
@@ -223,29 +223,29 @@ FSFS
 
 下载地址：https://www.visualsvn.com/downloads/
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps5.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记1102.png) 
 
  
 
 ### 3.2 **安装图形化服务端**
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps6.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记1114.png) 
 
  
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps7.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记1117.png) 
 
  
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps8.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记1120.png) 
 
 查看程序菜单：
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps9.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记1130.png) 
 
 查看服务，VisualSVN成功启动：
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps10.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记1152.png) 
 
  
 
@@ -261,27 +261,27 @@ svn服务端创建完成需要创建仓库，仓库中存放要版本控制的�
 
  
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps11.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记1229.png) 
 
  
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps12.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记1232.png) 
 
  
 
  
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps13.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记1236.png) 
 
  
 
 选择文件存储方式：
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps14.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记1249.png) 
 
  
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps15.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记1252.png) 
 
  
 
@@ -289,13 +289,13 @@ svn服务端创建完成需要创建仓库，仓库中存放要版本控制的�
 
 创建一个空的仓库：
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps16.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记1266.png) 
 
  
 
 设置用户访问仓库权限：
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps17.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记1281.png) 
 
  
 
@@ -303,9 +303,9 @@ svn服务端创建完成需要创建仓库，仓库中存放要版本控制的�
 
 仓库地址为https://ip地址或计算机名/svn/仓库名称
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps18.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记1324.png) 
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps19.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记1326.png) 
 
  
 
@@ -315,17 +315,17 @@ svn服务端创建完成需要创建仓库，仓库中存放要版本控制的�
 
  
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps20.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记1365.png) 
 
  
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps21.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记1368.png) 
 
  
 
 创建成功：
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps22.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记1377.png) 
 
  
 
@@ -339,19 +339,19 @@ branch：从trunk的某个点分离出来的代码拷贝，通常可以在不影
 
 tag：用来表示trunk和branch的某个点的状态，以代表项目的某个稳定状态，通常为最终发布状态。
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps23.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记1608.png) 
 
  
 
 工程目录创建完成，查看它的svn地址：
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps24.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记1643.png) 
 
  
 
 拷贝svn地址：
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps25.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记1994.png) 
 
  
 
@@ -381,11 +381,11 @@ svn客户端需要通过网络访问svn服务端提交文件、查询文件等�
 
 ​	TortoiseSVN是 Subversion 的 Windows 扩展。它使你避免接触 Subversion 枯燥而且不方便的 Command Line。它完全嵌入 Windows Explorer，使用时只需在正常的窗口里右键操作就可以了
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps26.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记2091.png) 
 
 下载：http://tortoisesvn.net/downloads.html	提供 32位和64位不同版本，安装tortoiseSVN 需要修改客户端电脑右键菜单，安装后需要重启电脑。
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps27.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记2126.png) 
 
  
 
@@ -395,15 +395,15 @@ svn客户端需要通过网络访问svn服务端提交文件、查询文件等�
 
  
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps28.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记2129.png) 
 
  
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps29.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记2132.png) 
 
  
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps30.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记2341.png) 
 
  
 
@@ -421,19 +421,19 @@ svn客户端需要通过网络访问svn服务端提交文件、查询文件等�
 
 ### 5.2 **创建用户**
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps31.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记1643.png) 
 
  
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps32.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记2356.png) 
 
 查看已创建的用户：
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps33.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记2364.png) 
 
 修改用户：
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps34.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记2373.png) 
 
  
 
@@ -443,21 +443,21 @@ svn客户端需要通过网络访问svn服务端提交文件、查询文件等�
 
  
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps35.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记2375.png) 
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps36.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记2386.png) 
 
  
 
 查看创建的组：
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps37.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记2394.png) 
 
  
 
 修改组：
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps38.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记2444.png) 
 
  
 
@@ -469,11 +469,11 @@ svn客户端需要通过网络访问svn服务端提交文件、查询文件等�
 
 删除系统安装后默认权限：
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps39.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记2447.png) 
 
  
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps40.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记2475.png) 
 
  
 
@@ -481,13 +481,13 @@ svn客户端需要通过网络访问svn服务端提交文件、查询文件等�
 
 进入权限分配界面：
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps41.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记2486.png) 
 
  
 
 添加组或用户：
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps42.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记2518.png) 
 
  
 
@@ -495,7 +495,7 @@ svn客户端需要通过网络访问svn服务端提交文件、查询文件等�
 
 继承父目录权限、不可访问、读权限、读/写权限
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps43.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记2531.png) 
 
  
 
@@ -503,25 +503,25 @@ svn客户端需要通过网络访问svn服务端提交文件、查询文件等�
 
 访问时输入账号：
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps44.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记2548.png) 
 
  
 
 登陆测试是否有读/写权限：
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps45.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记2565.png) 
 
  
 
 #### 5.4.3 **示例二：测试人员拥有读权限**
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps46.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记2582.png) 
 
  
 
 登陆测试是否有读/写权限：
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps47.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记2655.png) 
 
  
 
@@ -539,11 +539,11 @@ svn客户端需要通过网络访问svn服务端提交文件、查询文件等�
 
  
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps48.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记2658.png) 
 
  
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps49.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记2709.png) 
 
  
 
@@ -553,7 +553,7 @@ svn客户端需要通过网络访问svn服务端提交文件、查询文件等�
 
 Repo-browser ： 浏览仓库中资源信息 
 
-​	![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps50.jpg)
+​	![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记2804.png)
 
  
 
@@ -561,11 +561,11 @@ Repo-browser ： 浏览仓库中资源信息
 
 n Export ：导出项目 ，和checkout区别 （checkout检出后文件，含有.svn隐藏文件夹， 会和SVN仓库交互， export导出，没有.svn隐藏文件夹）
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps51.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记2829.png) 
 
 n import 将本地资源导入到svn 服务器
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps52.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记2841.png) 
 
  
 
@@ -577,7 +577,7 @@ n import 将本地资源导入到svn 服务器
 
 ### 6.3 **修改提交**
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps53.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记2883.png) 
 
  
 
@@ -587,11 +587,11 @@ n import 将本地资源导入到svn 服务器
 
 在要检出的目录中右键：
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps54.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记2886.png) 
 
  
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps55.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记2906.png) 
 
  
 
@@ -599,21 +599,21 @@ n import 将本地资源导入到svn 服务器
 
 在检出的目录中添加文件：
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps56.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记2911.png) 
 
-图标：![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps57.jpg) 这是一个新文件 
+图标：![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记2967.png) 这是一个新文件 
 
  
 
 n Add to ignore list ：添加到忽略列表 （标记该文件不需要版本控制 ）
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps58.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记2991.png) 
 
 n Add ： 标记这个文件添加到服务器 
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps59.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记3037.png) 
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps60.jpg) 已经标记要添加到版本库 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记3081.png) 已经标记要添加到版本库 
 
  
 
@@ -625,21 +625,21 @@ n Add ： 标记这个文件添加到服务器
 
 在检出目录或要提交修改的目录右键：
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps62.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记3085.png) 
 
  
 
  
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps63.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记3089.png) 
 
  
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps64.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记3117.png) 
 
  
 
-提交后目录中的内容与svn服务同步，目录图标变为：![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps65.jpg)
+提交后目录中的内容与svn服务同步，目录图标变为：![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记3157.png)
 
  
 
@@ -653,27 +653,27 @@ n Add ： 标记这个文件添加到服务器
 
 在检出目录或子目标或文件上右键：
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps66.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记3167.png) 
 
 ##### 6.3.4.1 **更新到最新版本**
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps67.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记3178.png) 
 
  
 
 ##### 6.3.4.2 **更新到指定版本**
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps68.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记3181.png) 
 
  
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps69.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记3206.png) 
 
 #### 6.3.5 **D****elete**
 
 Delete ：删除版本库文件
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps70.jpg) 标记删除后，本地文件删除，标记删除后需要提交。
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记3286.png) 标记删除后，本地文件删除，标记删除后需要提交。
 
  
 
@@ -685,11 +685,11 @@ Delete ：删除版本库文件
 
 在要回滚的检出目录或子目录中右键：
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps71.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记3289.png) 
 
  
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps72.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记3374.png) 
 
  
 
@@ -699,7 +699,7 @@ Delete ：删除版本库文件
 
 ​	如果当commit 遇到文件已经过时，说明另一个人可能改动过 ----- update
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps73.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记3507.png) 
 
 ​	db.properties 将本地和服务器合并到一起的文件 （不要直接看）
 
@@ -711,10 +711,10 @@ Delete ：删除版本库文件
 
  
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps74.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记3551.png) 
 
 手动Merge 后，需要将编辑后冲突文件，标记为已经解决 ， 再进行commit 
 
-![img](file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml10152\wps75.jpg) 
+![img](https://raw.githubusercontent.com/gangking/myBlog/master/docs/static/img/svn/svn-笔记3825.png) 
 
  
