@@ -30,7 +30,7 @@ module.exports = {
             '/vue/': getVueSidebar('Vue开发', '介绍'),
             '/es6/': getEs6Sidebar('Es6语法', '介绍'),
             '/studyNotes/': getThemeSidebar('前端开发', '介绍'),
-            '/node/': getNodeSidebar('后端技术', '介绍'),
+            '/node/': getNodeSidebar('后端及实用技术', '介绍'),
             '/about/': getMySelfSidebar('关于我', '目录'),
             '/': [
                 '',
@@ -87,7 +87,7 @@ module.exports = {
             ]
         },
         {
-            text: '后端技术',
+            text: '后端及实用技术',
             link: '/node/'
         },
         {
@@ -106,7 +106,9 @@ function getNodeSidebar (groupA, introductionA) {
         children: [
             ['', introductionA],
             ['nodeJs', 'NodeJs'],
-            ['CodeManagement', '代码管理工具']
+            ['CodeManagement', '代码管理工具'],
+            ['Xss', '防Xss'],
+            ['mobileAdaptation', '移动端适配'],
         ]
     },]
 }
