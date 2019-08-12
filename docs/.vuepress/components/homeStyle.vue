@@ -29,7 +29,7 @@ export default {
     windowOnresize () {
       this.screenWidth = this.$refs.wrapper.offsetWidth;
       window.onresize = () => {
-        this.screenWidth = this.$refs.wrapper.offsetWidth;
+        this.screenWidth = this.$refs.wrapper.clientWidth;
       }
 
     }

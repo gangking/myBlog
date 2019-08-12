@@ -22,16 +22,14 @@ module.exports = {
     serviceWorker: true,
     themeConfig: {
         sidebar: {
-            '/social/': [
-                'weixin'
-            ],
             '/webpack/': getWebpackSidebar('Webpack开发', '介绍'),
             '/react/': getReactSidebar('React开发', '介绍'),
             '/vue/': getVueSidebar('Vue开发', '介绍'),
             '/es6/': getEs6Sidebar('Es6语法', '介绍'),
             '/studyNotes/': getThemeSidebar('前端开发', '介绍'),
             '/node/': getNodeSidebar('后端及实用技术', '介绍'),
-            '/about/': getMySelfSidebar('关于我', '目录'),
+            '/about/': getMySelfSidebar('自我修养', '目录'),
+            '/social/': getSocialSidebar('社交媒体', '介绍'),
             '/': [
                 '',
                 '/about/',
@@ -55,15 +53,6 @@ module.exports = {
             link: '/'
         },
         {
-            text: '社交媒体',
-            items: [
-                {
-                    text: '微信',
-                    link: '/social/weixin/'
-                }
-
-            ]
-        }, {
             text: '前端技术',
             // link: '/studyNotes/'
             items: [
@@ -91,11 +80,27 @@ module.exports = {
             link: '/node/'
         },
         {
+            text: '社交媒体',
+            link: '/social/'
+        },
+        {
             text: '生活与创作',
             link: '/about/'
         }
         ]
     }
+}
+
+function getSocialSidebar (groupA, introductionA) {
+    return [{
+        title: groupA,
+        collapsable: false,
+        sidebarDepth: 2,
+        children: [
+            ['', introductionA],
+            ['csdn', 'CSDN']
+        ]
+    },]
 }
 
 function getNodeSidebar (groupA, introductionA) {
@@ -159,7 +164,9 @@ function getVueSidebar (groupA, introductionA) {
         children: [
             ['', introductionA],
             ['01', '3.0开发项目'],
-            ['02', '项目开发心得']
+            ['02', '项目开发心得'],
+            ['03', 'Vue源码']
+
 
         ]
     },]
@@ -190,6 +197,7 @@ function getMySelfSidebar (groupA, introductionA) {
             ['01', '自命不凡，却无足轻重'],
             ['02', '前端专业方向的尽头'],
             ['03', '学不进去，没时间学怎么办？'],
+            ['04', '滤镜与混合模式'],
         ]
     },]
 }
