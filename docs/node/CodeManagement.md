@@ -16,7 +16,9 @@ git checkout dev
 
 
 3、分支合并
-git merge createcomponents --no-ff
+```
+git merge 分支名 --no-ff
+```
 --no-ff 会将合并记录添加到git log当中
 
 
