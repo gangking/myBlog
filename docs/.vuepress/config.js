@@ -165,7 +165,8 @@ function getVueSidebar (groupA, introductionA) {
             ['', introductionA],
             ['01', '3.0开发项目'],
             ['02', '项目开发心得'],
-            ['03', 'Vue源码']
+            ['03', 'Vue源码'],
+            ['04', 'Vue单元测试']
 
 
         ]
