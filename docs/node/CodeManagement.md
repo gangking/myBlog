@@ -144,6 +144,30 @@ esc+shift+;再输入wq!回车即可
 
 
 
+## 查看远程分支
+
+```
+git branch -a
+1
+```
+
+带有“*”号的表示当前分支
+
+##  查看本地分支
+
+```
+git branch
+1
+```
+
+## 添加新分支
+
+```
+git checkout -b 新分支名
+```
+
+
+
 # SVN
 
 [使用方法](https://jingyan.baidu.com/article/6c67b1d6f524d52787bb1ef3.html)
