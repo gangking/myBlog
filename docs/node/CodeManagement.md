@@ -121,7 +121,26 @@ esc+shift+;再输入wq!回车即可
 
  
 
- 
+##  退出git log
+
+```
+英文状态 按Q
+```
+
+## 合并步骤
+
+```
+1、把代码clone到本地仓库
+      git clone https://gitee.com/zhanghan_123/gittest.git
+2、在本地创建dev分支并与远程dev分支对应
+      git checkout -b dev origin/dev
+3、切换到master分支
+      git checkout master
+4、本地的dev合并到master上（如果遇到冲突解决完后再次提交即可）
+      git merge dev
+5、推送到远程的master上
+      git push origin master  
+```
 
 
 
